@@ -104,7 +104,7 @@ pornsearch.videos('young', 5, 41);
 Get only webm
 ```js
 pornsearch.gifs('teen')
-  .then(gifs => {
+  .then((gifs) => {
     console.log(gifs.map(gif => gif.webm));
   });
 ```
