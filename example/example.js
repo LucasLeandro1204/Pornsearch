@@ -1,6 +1,6 @@
 'use strict';
 
-const pornsearch = require('../lib/pornsearch');
+const pornsearch = require('../src/pornsearch');
 
 pornsearch.videos('boobs')
   .then((response) => {
