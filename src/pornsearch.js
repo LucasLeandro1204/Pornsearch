@@ -35,7 +35,7 @@ const Pornsearch = {
       }
 
       return {
-        title: data.attr('title'),
+        title: data.find('img').attr('title'),
         url: 'http://pornhub.com/' + data.attr('href'),
         duration: data.find('.duration').text(),
         thumb: data.find('img').attr('data-mediumthumb').replace('(m=ecuK8daaaa)', '')
