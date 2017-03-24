@@ -1,6 +1,6 @@
 # Pornsearch
 
-Easy way to search for porn content on the [Pornhub](http://pornhub.com/)
+Easy way to search for porn content on [Pornhub](http://pornhub.com/)
   
 ## Simple search
 
@@ -8,6 +8,11 @@ Easy way to search for porn content on the [Pornhub](http://pornhub.com/)
 const pornsearch = require('../lib/pornsearch');
 
 pornsearch.videos('boobs')
+  .then((response) => {
+    console.log(response);
+  });
+
+pornsearch.gifs('pov')
   .then((response) => {
     console.log(response);
   });
@@ -24,8 +29,9 @@ Via NPM:
 $ npm install pornsearch
 ```
 
-##Output
+## Output
 
+### Videos
 If has success, the return will be an array with ~~possibly less than~~ 20 videos, structured as
 ```js
 {
@@ -38,6 +44,23 @@ If has success, the return will be an array with ~~possibly less than~~ 20 video
 If has error, will be returned a message like
 ```Markdown
 No results for search related to *relation* in page *page* and category number *number*
+```
+
+### Gifs
+
+If has success, the return will be an array with ~~possibly less than~~ 34 gifs, structured as
+
+__Gifs from Pornhub are extremely heavy, so be a nice person and share webm__
+```js
+{
+  title: 'gif title',
+  url: 'gif url',
+  webm: 'gif webm url'
+}
+```
+If has error, will be returned a message like
+```Markdown
+No results for search related to *relation* in page *page*
 ```
 
 ## Usage
@@ -56,18 +79,36 @@ pornsearch.videos('boobs')
   .catch((error) => {
     console.log(error);
   });
+
+pornsearch.gifs('pussy')
+  .then((response) => {
+    console.log(response);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 ```
 Specify the page number to search on
 
 ```js
 pornsearch.videos('ass', 3);
+
+pornsearch.gifs('teta', 7);
 ```
-You can too search by category number (look at Pornhub and search through for it)
+You can too search by category number (look at Pornhub and search through for it) *Video only*
 
 ```js
 pornsearch.videos('young', 5, 41);
 ```
 
+Get only webm
+```js
+pornsearch.gifs('teen')
+  .then(gifs => {
+    console.log(gifs.map(gif => gif.webm));
+  });
+```
+
 ### To do
 
-- [ ] Search for GIF
+- [X] Search for GIF
