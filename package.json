@@ -1,7 +1,7 @@
 {
   "name": "pornsearch",
   "version": "0.2.2",
-  "description": "Easy way to search for porn content on the Pornhub",
+  "description": "Easy way to search for porn content on Pornhub",
   "main": "src/pornsearch.js",
   "scripts": {
     "test": "node ./example/example"
@@ -11,7 +11,9 @@
     "nsfw",
     "pornhub",
     "xvideos",
-    "boobs"
+    "boobs",
+    "gifs",
+    "gif"
   ],
   "repository": {
     "type": "git",
