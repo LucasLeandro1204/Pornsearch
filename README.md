@@ -1,7 +1,9 @@
-#Pornsearch
+# Pornsearch
+
 Easy way to search for porn content on the [Pornhub](http://pornhub.com/)
   
-##Simple search
+## Simple search
+
 ```js
 const pornsearch = require('../lib/pornsearch');
 
@@ -11,7 +13,8 @@ pornsearch.videos('boobs')
   });
 ```
 
-##Installation
+## Installation
+
 Via GIT:
 ```bash
 $ git clone git://github.com/LucasLeandro1204/api.git node_modules/pornsearch
@@ -22,6 +25,7 @@ $ npm install pornsearch
 ```
 
 ##Output
+
 If has success, the return will be an array with ~~possibly less than~~ 20 videos, structured as
 ```js
 {
@@ -35,7 +39,8 @@ If has error, will be returned a message like
 No results for search related to *relation* in page *page* and category number *number*
 ```
 
-##Usage
+## Usage
+
 First require Pornsearch
 ```js
 const pornsearch = require('../lib/pornsearch');
@@ -62,6 +67,6 @@ You can too search by category number (look at Pornhub and search through for it
 pornsearch.videos('young', 5, 41);
 ```
 
-###To do
+### To do
 
 - [ ] Search for GIF
