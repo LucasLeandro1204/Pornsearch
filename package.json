@@ -1,0 +1,30 @@
+{
+  "name": "pornsearch",
+  "version": "0.1.0",
+  "description": "Easy way to search for porn content on the Pornhub",
+  "main": "src/pornsearch.js",
+  "scripts": {
+    "test": "node ./example/example"
+  },
+  "keywords": [
+    "porn",
+    "nsfw",
+    "pornhub",
+    "xvideos",
+    "boobs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucasLeandro1204/api.git"
+  },
+  "author": "Lucas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LucasLeandro1204/api/issues"
+  },
+  "homepage": "https://github.com/LucasLeandro1204/api#readme",
+  "devDependencies": {
+    "axios": "^0.15.3",
+    "cheerio": "^0.22.0"
+  }
+}
