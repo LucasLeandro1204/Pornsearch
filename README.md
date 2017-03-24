@@ -31,6 +31,7 @@ If has success, the return will be an array with ~~possibly less than~~ 20 video
 {
   title: 'video title',
   url: 'video url',
+  duration: 'video duration',
   thumb: 'video thumbnail'
 }
 ```
