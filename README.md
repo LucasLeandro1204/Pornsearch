@@ -5,7 +5,7 @@ Easy way to search for porn content on [Pornhub](http://pornhub.com/)
 ## Simple search
 
 ```js
-const pornsearch = require('../lib/pornsearch');
+const pornsearch = require('pornsearch');
 
 pornsearch.videos('boobs')
   .then((response) => {
@@ -67,7 +67,7 @@ No results for search related to *relation* in page *page*
 
 First require Pornsearch
 ```js
-const pornsearch = require('../lib/pornsearch');
+const pornsearch = require('pornsearch');
 ```
 Search for related only
 
