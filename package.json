@@ -25,7 +25,7 @@
     "url": "https://github.com/LucasLeandro1204/api/issues"
   },
   "homepage": "https://github.com/LucasLeandro1204/api#readme",
-  "devDependencies": {
+  "dependencies": {
     "axios": "^0.15.3",
     "cheerio": "^0.22.0"
   }
