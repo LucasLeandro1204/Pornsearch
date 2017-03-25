@@ -1,6 +1,6 @@
 {
   "name": "pornsearch",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Easy way to search for porn content on Pornhub",
   "main": "src/pornsearch.js",
   "scripts": {
