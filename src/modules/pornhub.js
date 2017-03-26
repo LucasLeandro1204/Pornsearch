@@ -70,7 +70,8 @@ const Pornhub = {
 
       return {
         title: data.find('span').text(),
-        url: 'http://dl.phncdn.com#id#.gif'.replace('#id#', data.attr('href'))
+        url: 'http://dl.phncdn.com#id#.gif'.replace('#id#', data.attr('href')),
+        webm: data.find('video').attr('data-webm')
       };
     }
   }
