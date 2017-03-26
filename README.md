@@ -50,12 +50,10 @@ No results for search related to *relation* in page *page* and category number *
 
 If has success, the return will be an array with ~~possibly less than~~ 34 gifs, structured as
 
-__Gifs from Pornhub are extremely heavy, so be a nice person and share webm__
 ```js
 {
   title: 'gif title',
-  url: 'gif url',
-  webm: 'gif webm url'
+  url: 'gif url'
 }
 ```
 If has error, will be returned a message like
