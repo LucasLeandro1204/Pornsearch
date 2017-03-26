@@ -23,24 +23,24 @@ pornhub.gifs('pov')
 #### Basic search
 
 | Site - Module name            | Videos | Gifs |
-|:------------------------------|:------:|:---:|
-| [pornhub](http://pornhub.com/) | [X]   | [X] |
-| [xvideos](http://xvideos.com/) | [X]   |     |
+|:------------------------------|:------:|:----:|
+| [pornhub](http://pornhub.com/) | X     | X    |  
+| [xvideos](http://xvideos.com/) | X     | X    |
 
 #### Videos structure
 What will return in video search
 
 | Site - Module name            | URL | Thumbnail | Duration |
 |:------------------------------|:---:|:---------:|:--------:|
-| [pornhub](http://pornhub.com/) |[X] | [X]       | [X]      | 
-| [xvideos](http://xvideos.com/) |[X] | [X]       | [X]      |
+| [pornhub](http://pornhub.com/) | X  | X         | X        | 
+| [xvideos](http://xvideos.com/) | X  | X         | X        |
 
 #### Gifs structure
 What will return in gif search
 
-| Site - Module name            | URL | WEBM |
-|:------------------------------|:---:|:----:|
-| [pornhub](http://pornhub.com/) |[X] | [X]  |
+| Site - Module name             | URL | WEBM |
+|:-------------------------------|:---:|:----:|
+| [pornhub](http://pornhub.com/) | X   | X    |
 
 ## Installation
 
