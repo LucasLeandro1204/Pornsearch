@@ -2,31 +2,6 @@
 
 Easy way to search for porn content
 
-## Support
-
-### Basic search
-
-| Site                          | Videos | Gif |
-|:-----------------------------:|:------:|:---:|
-| [Pornhub](http://pornhub.com/) | [X]   | [X] |
-| [xVideos](http://xvideos.com/) | [X]   |     |
-
-### Videos structure
-What will return in video search
-
-| Site                          | URL | Thumbnail | Duration |
-|:-----------------------------:|:---:|:---------:|:--------:|
-| [Pornhub](http://pornhub.com/) |[X] | [X]       | [X]      | 
-| [xVideos](http://xvideos.com/) |[X] | [X]       | [X]      |
-
-### Gifs structure
-What will return in gif search
-
-| Site                          | URL | WEBM |
-|:-----------------------------:|:---:|:----:|
-| [Pornhub](http://pornhub.com/) |[X] | [X]  |
-
-
 ## Simple search
 
 ```js
@@ -43,6 +18,29 @@ pornhub.gifs('pov')
     console.log(response);
   });
 ```
+## Support
+
+#### Basic search
+
+| Site - Module name            | Videos | Gifs |
+|:------------------------------|:------:|:---:|
+| [pornhub](http://pornhub.com/) | [X]   | [X] |
+| [xvideos](http://xvideos.com/) | [X]   |     |
+
+#### Videos structure
+What will return in video search
+
+| Site - Module name            | URL | Thumbnail | Duration |
+|:------------------------------|:---:|:---------:|:--------:|
+| [pornhub](http://pornhub.com/) |[X] | [X]       | [X]      | 
+| [xvideos](http://xvideos.com/) |[X] | [X]       | [X]      |
+
+#### Gifs structure
+What will return in gif search
+
+| Site - Module name            | URL | WEBM |
+|:------------------------------|:---:|:----:|
+| [pornhub](http://pornhub.com/) |[X] | [X]  |
 
 ## Installation
 
@@ -57,7 +55,7 @@ $ npm install pornsearch
 
 ## Output
 
-### Videos
+#### Videos
 If has success, the return will be an array with videos, structured as
 ```js
 {
@@ -72,7 +70,9 @@ If has error, will be returned a message like
 No results for search related to *relation* in page *page* and category number *number*
 ```
 
-### Gifs
+**Check the support table to know exactly what will be returned**
+
+#### Gifs
 
 If has success, the return will be an array with gifs, structured as
 
@@ -90,6 +90,8 @@ If has error, will be returned a message like
 No results for search related to *relation* in page *page*
 ```
 
+**Check the support table to know exactly what will be returned**
+
 ## Usage
 
 First require Pornsearch
@@ -100,6 +102,8 @@ Then pass the website you want to search on (like 'pornhub')
 ```js
 const pornhub = require('pornhub');
 ```
+**Check the [support table](#support) to know what you can do**
+
 **An error will be thrown if don't support**
 
 Search for related only
