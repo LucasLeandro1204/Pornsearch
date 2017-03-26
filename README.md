@@ -31,7 +31,7 @@ What will return in gif search
 
 ```js
 const pornsearch = require('pornsearch');
-const pornhub = pornsearch.site('pornhub');
+const pornhub = pornsearch.load('pornhub');
 
 pornhub.videos('boobs')
   .then((response) => {

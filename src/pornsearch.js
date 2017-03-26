@@ -2,7 +2,7 @@
 
 const Pornsearch = {
 
-  site(site) {
+  load(site) {
     try {
       return require(`./modules/${site}`);
     } catch(error) {
