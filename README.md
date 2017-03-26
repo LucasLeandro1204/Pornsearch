@@ -3,9 +3,30 @@
 Easy way to search for porn content
 
 ## Support
-Currently supports
 
-[Pornhub](http://pornhub.com/)
+### Basic search
+
+| Site                          | Videos | Gif |
+|:-----------------------------:|:------:|:---:|
+| [Pornhub](http://pornhub.com/) | [X]   | [X] |
+| [xVideos](http://xvideos.com/) | [X]   |     |
+
+### Videos structure
+What will return in video search
+
+| Site                          | URL | Thumbnail | Duration |
+|:-----------------------------:|:---:|:---------:|:--------:|
+| [Pornhub](http://pornhub.com/) |[X] | [X]       | [X]      | 
+| [xVideos](http://xvideos.com/) |[X] | [X]       | [X]      |
+
+### Gifs structure
+What will return in gif search
+
+| Site                          | URL | WEBM |
+|:-----------------------------:|:---:|:----:|
+| [Pornhub](http://pornhub.com/) |[X] | [X]  |
+
+
 ## Simple search
 
 ```js
