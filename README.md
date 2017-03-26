@@ -104,11 +104,6 @@ pornhub.videos('ass', 3);
 
 pornhub.gifs('teta', 7);
 ```
-You can too search by category number (look at Pornhub and search through for it) *Video only*
-
-```js
-pornhub.videos('young', 5, 41);
-```
 
 Get only gifs
 ```js

@@ -5,8 +5,8 @@ const cheerio = require('cheerio');
 
 const Pornhub = {
 
-  videos(relation, page = 1, category = 0) {
-    let url = `http://www.pornhub.com/video/search?search=${relation}&page=${page}&filter_category=${category}`;
+  videos(relation, page = 1) {
+    let url = `http://www.pornhub.com/video/search?search=${relation}&page=${page}`;
 
     return new Promise((resolve, reject) => {
       axios.get(url)
@@ -14,7 +14,7 @@ const Pornhub = {
           resolve(this.video.parse(response.data));
         })
         .catch((error) => {
-          reject(`No results for search related to ${relation} in page ${page} and category number ${0}`);
+          reject(`No results for search related to ${relation} in page ${page}`);
         });
     });
   },
