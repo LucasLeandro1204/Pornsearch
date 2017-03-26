@@ -1,22 +1,46 @@
 # Pornsearch
 
-Easy way to search for porn content on [Pornhub](http://pornhub.com/)
-  
+Easy way to search for porn content
+
 ## Simple search
 
 ```js
 const pornsearch = require('pornsearch');
+const pornhub = pornsearch.load('pornhub');
 
-pornsearch.videos('boobs')
+pornhub.videos('boobs')
   .then((response) => {
     console.log(response);
   });
 
-pornsearch.gifs('pov')
+pornhub.gifs('pov')
   .then((response) => {
     console.log(response);
   });
 ```
+## Support
+
+#### Basic search
+
+| Site - Module name            | Videos | Gifs |
+|:------------------------------|:------:|:----:|
+| [pornhub](http://pornhub.com/) | X     | X    |  
+| [xvideos](http://xvideos.com/) | X     | X    |
+
+#### Videos structure
+What will return in video search
+
+| Site - Module name            | URL | Thumbnail | Duration |
+|:------------------------------|:---:|:---------:|:--------:|
+| [pornhub](http://pornhub.com/) | X  | X         | X        | 
+| [xvideos](http://xvideos.com/) | X  | X         | X        |
+
+#### Gifs structure
+What will return in gif search
+
+| Site - Module name             | URL | WEBM |
+|:-------------------------------|:---:|:----:|
+| [pornhub](http://pornhub.com/) | X   | X    |
 
 ## Installation
 
@@ -31,8 +55,8 @@ $ npm install pornsearch
 
 ## Output
 
-### Videos
-If has success, the return will be an array with ~~possibly less than~~ 20 videos, structured as
+#### Videos
+If has success, the return will be an array with videos, structured as
 ```js
 {
   title: 'video title',
@@ -46,11 +70,14 @@ If has error, will be returned a message like
 No results for search related to *relation* in page *page* and category number *number*
 ```
 
-### Gifs
+**Check the support table to know exactly what will be returned**
 
-If has success, the return will be an array with ~~possibly less than~~ 34 gifs, structured as
+#### Gifs
 
-__Gifs from Pornhub are extremely heavy, so be a nice person and share webm__
+If has success, the return will be an array with gifs, structured as
+
+__Gifs in general are extremely heavy, so be a nice person and share webm__
+
 ```js
 {
   title: 'gif title',
@@ -63,16 +90,26 @@ If has error, will be returned a message like
 No results for search related to *relation* in page *page*
 ```
 
+**Check the support table to know exactly what will be returned**
+
 ## Usage
 
 First require Pornsearch
 ```js
 const pornsearch = require('pornsearch');
 ```
+Then pass the website you want to search on (like 'pornhub')
+```js
+const pornhub = require('pornhub');
+```
+**Check the [support table](#support) to know what you can do**
+
+**An error will be thrown if don't support**
+
 Search for related only
 
 ```js
-pornsearch.videos('boobs')
+pornhub.videos('boobs')
   .then((response) => {
     console.log(response);
   })
@@ -80,7 +117,7 @@ pornsearch.videos('boobs')
     console.log(error);
   });
 
-pornsearch.gifs('pussy')
+pornhub.gifs('pussy')
   .then((response) => {
     console.log(response);
   })
@@ -91,24 +128,15 @@ pornsearch.gifs('pussy')
 Specify the page number to search on
 
 ```js
-pornsearch.videos('ass', 3);
+pornhub.videos('ass', 3);
 
-pornsearch.gifs('teta', 7);
-```
-You can too search by category number (look at Pornhub and search through for it) *Video only*
-
-```js
-pornsearch.videos('young', 5, 41);
+pornhub.gifs('teta', 7);
 ```
 
-Get only webm
+Get only gifs
 ```js
-pornsearch.gifs('teen')
+pornhub.gifs('teen')
   .then((gifs) => {
-    console.log(gifs.map(gif => gif.webm));
+    console.log(gifs.map(gif => gif.url));
   });
 ```
-
-### To do
-
-- [X] Search for GIF
