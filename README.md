@@ -1,18 +1,23 @@
 # Pornsearch
 
-Easy way to search for porn content on [Pornhub](http://pornhub.com/)
-  
+Easy way to search for porn content
+
+## Support
+Currently supports
+
+[Pornhub](http://pornhub.com/)
 ## Simple search
 
 ```js
 const pornsearch = require('pornsearch');
+const pornhub = pornsearch.site('pornhub');
 
-pornsearch.videos('boobs')
+pornhub.videos('boobs')
   .then((response) => {
     console.log(response);
   });
 
-pornsearch.gifs('pov')
+pornhub.gifs('pov')
   .then((response) => {
     console.log(response);
   });
@@ -32,7 +37,7 @@ $ npm install pornsearch
 ## Output
 
 ### Videos
-If has success, the return will be an array with ~~possibly less than~~ 20 videos, structured as
+If has success, the return will be an array with videos, structured as
 ```js
 {
   title: 'video title',
@@ -48,7 +53,7 @@ No results for search related to *relation* in page *page* and category number *
 
 ### Gifs
 
-If has success, the return will be an array with ~~possibly less than~~ 34 gifs, structured as
+If has success, the return will be an array with gifs, structured as
 
 ```js
 {
@@ -67,10 +72,16 @@ First require Pornsearch
 ```js
 const pornsearch = require('pornsearch');
 ```
+Then pass the website you want to search on (like 'pornhub')
+```js
+const pornhub = require('pornhub');
+```
+**An error will be thrown if don't support**
+
 Search for related only
 
 ```js
-pornsearch.videos('boobs')
+pornhub.videos('boobs')
   .then((response) => {
     console.log(response);
   })
@@ -78,7 +89,7 @@ pornsearch.videos('boobs')
     console.log(error);
   });
 
-pornsearch.gifs('pussy')
+pornhub.gifs('pussy')
   .then((response) => {
     console.log(response);
   })
@@ -89,24 +100,20 @@ pornsearch.gifs('pussy')
 Specify the page number to search on
 
 ```js
-pornsearch.videos('ass', 3);
+pornhub.videos('ass', 3);
 
-pornsearch.gifs('teta', 7);
+pornhub.gifs('teta', 7);
 ```
 You can too search by category number (look at Pornhub and search through for it) *Video only*
 
 ```js
-pornsearch.videos('young', 5, 41);
+pornhub.videos('young', 5, 41);
 ```
 
-Get only webm
+Get only gifs
 ```js
-pornsearch.gifs('teen')
+pornhub.gifs('teen')
   .then((gifs) => {
-    console.log(gifs.map(gif => gif.webm));
+    console.log(gifs.map(gif => gif.url));
   });
 ```
-
-### To do
-
-- [X] Search for GIF
