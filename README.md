@@ -2,6 +2,8 @@
 
 Easy way to search for porn content
 
+#### If you have any suggestions of a website, open an issue!
+
 ## Simple search
 
 ```js
