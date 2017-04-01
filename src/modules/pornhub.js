@@ -14,6 +14,7 @@ const Pornhub = {
           resolve(this.video.parse(response.data));
         })
         .catch((error) => {
+          console.log(error);
           reject(`No results for search related to ${relation} in page ${page}`);
         });
     });
