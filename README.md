@@ -24,18 +24,20 @@ pornhub.gifs('pov')
 
 #### Basic search
 
-| Site - Module name            | Videos | Gifs |
-|:------------------------------|:------:|:----:|
-| [pornhub](http://pornhub.com/) | X     | X    |  
-| [xvideos](http://xvideos.com/) | X     | X    |
+| Site - Module name             | Videos | Gifs |
+|:-------------------------------|:------:|:----:|
+| [pornhub](http://pornhub.com/)  | X     | X    |  
+| [xvideos](http://xvideos.com/)  | X     | X    |
+| [redtube](https://redtube.com/) | X     |      |
 
 #### Videos structure
 What will return in video search
 
-| Site - Module name            | URL | Thumbnail | Duration |
-|:------------------------------|:---:|:---------:|:--------:|
-| [pornhub](http://pornhub.com/) | X  | X         | X        | 
-| [xvideos](http://xvideos.com/) | X  | X         | X        |
+| Site - Module name             | URL | Thumbnail | Duration |
+|:-------------------------------|:---:|:---------:|:--------:|
+| [pornhub](http://pornhub.com/)  | X  | X         | X        | 
+| [xvideos](http://xvideos.com/)  | X  | X         | X        |
+| [redtube](https://redtube.com/) | X  | X         | X        |
 
 #### Gifs structure
 What will return in gif search
