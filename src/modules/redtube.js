@@ -20,7 +20,17 @@ const Redtube = {
   },
 
   video: {
-    format(video) {
+    format(videos) {
+      return videos.map((data) => {
+        let video = data.video;
+        
+        return {
+          title: video.title,
+          url: video.url,
+          duration: video.duration,
+          thumb: video.default_thumb,
+        };
+      });
     }
   }
 };
