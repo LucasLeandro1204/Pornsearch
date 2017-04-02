@@ -27,7 +27,7 @@ pornhub.gifs('pov')
 | Site - Module name             | Videos | Gifs |
 |:-------------------------------|:------:|:----:|
 | [pornhub](http://pornhub.com/)  | X     | X    |  
-| [xvideos](http://xvideos.com/)  | X     | X    |
+| [xvideos](http://xvideos.com/)  | X     |      |
 | [redtube](https://redtube.com/) | X     |      |
 
 #### Videos structure
