@@ -6,7 +6,7 @@ const cheerio = require('cheerio');
 const Sex = {
 
   videos(relation, page = 1) {
-    let url = ``;
+    let url = `http://www.sex.com/search/videos?query=${relation}&page=${page}`;
 
     return new Promise((resolve, reject) => {
       axios.get(url)
@@ -36,6 +36,10 @@ const Sex = {
 
   video: {
     parse(body) {
+      const $ = cheerio.load(body);
+      let videos = $('#masonry_container .masonry_box').has('.duration');
+
+      return '';
     },
 
     format(video) {
@@ -47,9 +51,9 @@ const Sex = {
     },
 
     format(gif) {
-      };
+
     }
   }
-};
+}
 
 module.exports = Sex;
