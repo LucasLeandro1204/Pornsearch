@@ -39,10 +39,16 @@ const Sex = {
       const $ = cheerio.load(body);
       let videos = $('#masonry_container .masonry_box').has('.duration');
 
-      return '';
+      return videos.map((i, video) => this.format($(video))).get();
     },
 
     format(video) {
+      return {
+        title: video.find('.title a').text(),
+        url: 'http://www.sex.com' + video.find('.title a').attr('href'),
+        duration: video.find('.duration').text(),
+        thumb: video.find('.image').data('src')
+      };
     }
   },
 
