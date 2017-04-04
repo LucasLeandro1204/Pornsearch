@@ -43,9 +43,11 @@ const Sex = {
     },
 
     format(video) {
+      let title = video.find('.title a');
+      
       return {
-        title: video.find('.title a').text(),
-        url: 'http://www.sex.com' + video.find('.title a').attr('href'),
+        title: title.text(),
+        url: 'http://www.sex.com' + title.attr('href'),
         duration: video.find('.duration').text(),
         thumb: video.find('.image').data('src')
       };
