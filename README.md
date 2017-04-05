@@ -108,7 +108,7 @@ const pornsearch = require('pornsearch');
 ```
 Then pass the website you want to search on (like 'pornhub')
 ```js
-const pornhub = require('pornhub');
+const pornhub = pornsearch.load('pornhub');
 ```
 **Check the [support table](#support) to know what you can do**
 
