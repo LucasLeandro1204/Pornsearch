@@ -21,7 +21,7 @@ const Sex = {
   },
 
   gifs(relation, page = 1) {
-    let url = ``;
+    let url = `http://www.sex.com/search/gifs?query=${relation}&page=${page}`;
 
     return new Promise((resolve, reject) => {
       axios.get(url)
@@ -56,10 +56,19 @@ const Sex = {
 
   gif: {
     parse(body) {
+      const $ = cheerio.load(body);
+      let gifs = $('#masonry_container .masonry_box').not('.ad_box');
+
+      return gifs.map((i, gif) => this.format($(gif))).get();
     },
 
     format(gif) {
-
+      let data = gif.find('.image');
+      
+      return {
+        title: data.attr('alt'),
+        url: data.data('src')
+      }
     }
   }
 }
