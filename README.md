@@ -84,7 +84,7 @@ No results for search related to *relation* in page *page* and category number *
 
 If has success, the return will be an array with gifs, structured as
 
-__Gifs in general are extremely heavy, so be a nice person and share webm__
+__PORNHUB gifs in general are extremely heavy, so be a nice person and share webm__ (sex.com gifs are nice)
 
 ```js
 {
