@@ -64,7 +64,7 @@ const Sex = {
 
     format(gif) {
       let data = gif.find('.image');
-      
+
       return {
         title: data.attr('alt'),
         url: data.data('src')
