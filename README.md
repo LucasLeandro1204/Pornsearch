@@ -27,8 +27,10 @@ pornhub.gifs('pov')
 | Site - Module name             | Videos | Gifs |
 |:-------------------------------|:------:|:----:|
 | [pornhub](http://pornhub.com/)  | X     | X    |  
-| [xvideos](http://xvideos.com/)  | X     |      |
+| [sex](http://sex.com/)          | X     | X    |
 | [redtube](https://redtube.com/) | X     |      |
+| [xvideos](http://xvideos.com/)  | X     |      |
+
 
 #### Videos structure
 What will return in video search
@@ -36,8 +38,9 @@ What will return in video search
 | Site - Module name             | URL | Thumbnail | Duration |
 |:-------------------------------|:---:|:---------:|:--------:|
 | [pornhub](http://pornhub.com/)  | X  | X         | X        | 
-| [xvideos](http://xvideos.com/)  | X  | X         | X        |
+| [sex](http://sex.com/)          | X  | X         | X        |
 | [redtube](https://redtube.com/) | X  | X         | X        |
+| [xvideos](http://xvideos.com/)  | X  | X         | X        |
 
 #### Gifs structure
 What will return in gif search
@@ -45,6 +48,7 @@ What will return in gif search
 | Site - Module name             | URL | WEBM |
 |:-------------------------------|:---:|:----:|
 | [pornhub](http://pornhub.com/) | X   | X    |
+| [sex](http://sex.com/)         | X   |      |
 
 ## Installation
 
