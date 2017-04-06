@@ -21,14 +21,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LucasLeandro1204/api.git"
+    "url": "git+https://github.com/LucasLeandro1204/pornsearch"
   },
   "author": "Lucas",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LucasLeandro1204/api/issues"
+    "url": "https://github.com/LucasLeandro1204/pornsearch/issues"
   },
-  "homepage": "https://github.com/LucasLeandro1204/api#readme",
+  "homepage": "https://github.com/LucasLeandro1204/pornsearch#readme",
   "dependencies": {
     "axios": "^0.15.3",
     "cheerio": "^0.22.0"
