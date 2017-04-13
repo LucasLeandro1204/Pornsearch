@@ -1,6 +1,6 @@
 'use strict';
 
-const pornsearch = require('../src/pornsearch');
+const pornsearch = require('../');
 const pornhub = pornsearch.load('pornhub');
 
 pornhub.videos('boobs')

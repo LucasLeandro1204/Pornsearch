@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./lib/pornsearch');
+module.exports = require('./src/pornsearch');
