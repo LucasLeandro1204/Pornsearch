@@ -141,7 +141,7 @@ pornhub.videos('ass', 3);
 pornhub.gifs('teta', 7);
 ```
 
-Get only gifs
+Log only url
 ```js
 pornhub.gifs('teen')
   .then((gifs) => {
