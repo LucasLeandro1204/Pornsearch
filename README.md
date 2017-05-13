@@ -11,15 +11,12 @@ const pornsearch = require('pornsearch');
 const pornhub = pornsearch.load('pornhub');
 
 pornhub.videos('boobs')
-  .then((response) => {
-    console.log(response);
-  });
+  .then(response => console.log(response));
 
 pornhub.gifs('pov')
-  .then((response) => {
-    console.log(response);
-  });
+  .then(response => console.log(response));
 ```
+
 ## Support
 
 #### Basic search
