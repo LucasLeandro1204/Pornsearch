@@ -1,6 +1,6 @@
 'use strict';
 
-const AbstractModule = require('./core/AbstractModule');
+const AbstractModule = require('./Core/AbstractModule');
 const FS             = require('fs');
 const Path           = require('path');
 
@@ -8,16 +8,18 @@ const instaceofAbstractModule = ((module) => {
   if (! (module instanceof AbstractModule)) {
     throw new Error(`Module should be an instance of Abstract module`);
   }
+
+  return module;
 });
 
 class Pornsearch {
   constructor () {
     this.module = {};
-    this.modules = {};
+    this.modules = [];
     this.load();
   }
 
-  modules () {
+  support () {
     return this.modules.map(module => module.name);
   }
 
@@ -55,7 +57,7 @@ class Pornsearch {
         throw new Error(err);
       }
 
-      this.modules = files.map(file => instaceofAbstractModule(new (require(Path.resolve(dir, file)))));
+      let a = files.map(file => instaceofAbstractModule(new (require(Path.resolve(dir, file)))));
     });
   }
 };
