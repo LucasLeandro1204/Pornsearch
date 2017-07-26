@@ -6,24 +6,26 @@ const GIF = 'gif';
 const VIDEO = 'video';
 const PARSER = 'Parser';
 
-const AbstractModule = {
-  query: '',
+class AbstractModule {
+  constructor () {
+    this.query = '';
+  }
 
   get name () {
     throw new Error('This function must be overwrite');
-  },
+  }
 
   get videourl () {
     throw new Error(`${this.name} doesn't support video search`);
-  },
+  }
 
   get gifurl () {
     throw new Error(`${this.name} doesn't support gif search`);
-  },
+  }
 
   gifs (page = 1) {
     this.call(this.gifurl, page, GIF);
-  },
+  }
 
   call (url, type) {
     return new Promise((resolve, reject) => {
