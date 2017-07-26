@@ -48,7 +48,7 @@ class Pornsearch {
   }
 
   load () {
-    let dir = Path.resolve('./src/modules');
+    let dir = Path.resolve('./src/Modules');
 
     FS.readdir(dir, 'UTF-8', (err, files) => {
       if (err) {
