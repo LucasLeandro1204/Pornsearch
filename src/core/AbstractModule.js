@@ -1,3 +1,5 @@
+'use strict';
+
 const Axios = require('axios');
 
 const GIF = 'gif';

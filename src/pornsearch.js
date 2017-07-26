@@ -1,9 +1,26 @@
 'use strict';
 
 const AbstractModule = require('./core/AbstractModule');
+const FS             = require('fs');
+const Path           = require('path');
 
 const Pornsearch = {
   module: {},
+  modules: {},
+
+  init () {
+    let dir = Path.resolve('./src/modules');
+
+    FS.readdir(dir, 'UTF-8', (err, files) => {
+      if (err) {
+        throw new Error(err);
+      }
+
+      this.modules = files.map(file => require(Path.resolve(dir, file)));
+    });
+
+    return this;
+  },
 
   search (query) {
     this.module.query = query;
@@ -32,4 +49,4 @@ const Pornsearch = {
   }
 };
 
-module.exports = Pornsearch;
+module.exports = Pornsearch.init();
