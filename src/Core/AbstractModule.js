@@ -2,10 +2,6 @@
 
 const Axios = require('axios');
 
-const GIF = 'gif';
-const VIDEO = 'video';
-const PARSER = 'Parser';
-
 class AbstractModule {
   constructor () {
     this.query = '';
@@ -15,11 +11,11 @@ class AbstractModule {
     throw new Error('This function must be overwrite');
   }
 
-  get videourl () {
+  get videoUrl () {
     throw new Error(`${this.name} doesn't support video search`);
   }
 
-  get gifurl () {
+  get gifUrl () {
     throw new Error(`${this.name} doesn't support gif search`);
   }
 

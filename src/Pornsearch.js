@@ -4,6 +4,10 @@ const AbstractModule = require('./Core/AbstractModule');
 const FS             = require('fs');
 const Path           = require('path');
 
+const GIF = 'gif';
+const VIDEO = 'video';
+const PARSER = 'Parser';
+
 const instaceofAbstractModule = ((module) => {
   if (! (module instanceof AbstractModule)) {
     throw new Error(`Module should be an instance of Abstract module`);
@@ -30,34 +34,39 @@ class Pornsearch {
   }
 
   gifs (page) {
-    return this.module.gifs(page);
+    return this._get(this.module.gifUrl, GIF);
+  }
+
+  videos (page) {
+    return this._get(this.module.videoUrl, GIF);
+  }
+
+  _get (url, type) {
+    return new Promise((resolve, reject) => {
+      axios.get(url)
+        .then(({ body }) => {
+          resolve(this.module[type + PARSER](body));
+        })
+        .catch((error) => {
+          console.log(error);
+          reject(`No results for search related to ${this.query} in page ${this.page}`);
+        });
+    });
   }
 
   driver (site) {
-    try {
-      let module = require(`./modules/${site}`);
-
-      if (! module instanceof AbstractModule) {
-        throw new Error(`Module should be an instance of Abstract module`);
-      }
-
-      this.module = module;
-    } catch(error) {
-      throw new Error(`Currently we do not support ${site}`);
-    }
-
     return this;
   }
 
   load () {
     let dir = Path.resolve('./src/Modules');
 
-    FS.readdir(dir, 'UTF-8', (err, files) => {
+    FS.readdirSync(dir, 'UTF-8', (err, files) => {
       if (err) {
         throw new Error(err);
       }
-
-      let a = files.map(file => instaceofAbstractModule(new (require(Path.resolve(dir, file)))));
+      
+      this.modules = files.map(file => instaceofAbstractModule(new (require(Path.resolve(dir, file)))));
     });
   }
 };
