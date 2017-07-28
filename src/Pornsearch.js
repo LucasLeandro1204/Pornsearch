@@ -60,14 +60,9 @@ class Pornsearch {
 
   load () {
     let dir = Path.resolve('./src/Modules');
+    let files = FS.readdirSync(dir, 'UTF-8');
 
-    FS.readdirSync(dir, 'UTF-8', (err, files) => {
-      if (err) {
-        throw new Error(err);
-      }
-      
-      this.modules = files.map(file => instaceofAbstractModule(new (require(Path.resolve(dir, file)))));
-    });
+    this.modules = files.map(file => instaceofAbstractModule(new (require(Path.resolve(dir, file)))));
   }
 };
 
