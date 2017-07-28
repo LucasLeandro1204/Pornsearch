@@ -23,21 +23,12 @@ class AbstractModule {
     throw new Error(`${this.name} doesn't support gif search`);
   }
 
-  gifs (page = 1) {
-    this.call(this.gifurl, page, GIF);
+  videoParser () {
+    throw new Error('This function must be overwrite');
   }
 
-  call (url, type) {
-    return new Promise((resolve, reject) => {
-      axios.get(url)
-        .then((response) => {
-          resolve(this[type + PARSER]());
-        })
-        .catch((error) => {
-          console.log(error);
-          reject(`No results for search related to ${this.query} in page ${this.page}`);
-        });
-    });
+  gifParser () {
+    throw new Error('This function must be overwrite');
   }
 };
 
