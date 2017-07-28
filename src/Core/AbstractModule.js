@@ -11,11 +11,11 @@ class AbstractModule {
     throw new Error('This function must be overwrite');
   }
 
-  get videoUrl () {
+  videoUrl () {
     throw new Error(`${this.name} doesn't support video search`);
   }
 
-  get gifUrl () {
+  gifUrl () {
     throw new Error(`${this.name} doesn't support gif search`);
   }
 

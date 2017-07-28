@@ -28,6 +28,10 @@ class Pornsearch {
     return this.modules.map(module => module.name);
   }
 
+  current () {
+    return this.module.name;
+  }
+
   search (query) {
     this.module.query = query;
 
@@ -35,11 +39,11 @@ class Pornsearch {
   }
 
   gifs (page) {
-    return this._get(this.module.gifUrl, GIF);
+    return this._get(this.module.gifUrl(page), GIF);
   }
 
   videos (page) {
-    return this._get(this.module.videoUrl, GIF);
+    return this._get(this.module.videoUrl(page), GIF);
   }
 
   _get (url, type) {
@@ -50,7 +54,7 @@ class Pornsearch {
         })
         .catch((error) => {
           console.log(error);
-          reject(`No results for search related to ${this.query} in page ${this.page}`);
+          reject(`No results for search related to ${this.module.query} in page ${page}`);
         });
     });
   }
