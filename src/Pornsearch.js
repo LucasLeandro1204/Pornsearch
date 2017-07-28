@@ -17,10 +17,11 @@ const instaceofAbstractModule = ((module) => {
 });
 
 class Pornsearch {
-  constructor () {
+  constructor (driver) {
     this.module = {};
     this.modules = [];
     this.load();
+    this.driver(driver);
   }
 
   support () {
@@ -54,7 +55,9 @@ class Pornsearch {
     });
   }
 
-  driver (site) {
+  driver (driver = '') {
+    this.module = this.modules.find(module => module.name == driver);
+
     return this;
   }
 
