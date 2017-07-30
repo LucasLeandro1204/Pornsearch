@@ -41,14 +41,14 @@ class Pornsearch {
   }
 
   videos (page) {
-    return this._get(this.module.videoUrl(page), GIF, page || this.module.firstpage);
+    return this._get(this.module.videoUrl(page), VIDEO, page || this.module.firstpage);
   }
 
   _get (url, type, page) {
     return new Promise((resolve, reject) => {
       Axios.get(url)
-        .then(({ body }) => {
-          resolve(this.module[type + PARSER](body));
+        .then(({ data: body }) => {
+          resolve(this.module[type + PARSER](Cheerio.load(body), body));
         })
         .catch((error) => {
           console.log(error);
