@@ -7,12 +7,16 @@ class Pornhub extends AbstractModule {
     return 'pornhub';
   }
 
-  videoUrl (page = 1) {
-    return `http://www.pornhub.com/video/search?search=${this.query}&page=${page}`;
+  get firstpage () {
+    return 1;
   }
 
-  videoUrl (page = 1) {
-    return `http://www.pornhub.com/gifs/search?search=${this.query}&page=${page}`;
+  videoUrl (page) {
+    return `http://www.pornhub.com/video/search?search=${this.query}&page=${page || this.firstpage}`;
+  }
+
+  videoUrl (page) {
+    return `http://www.pornhub.com/gifs/search?search=${this.query}&page=${page || this.firstpage}`;
   }
 };
 

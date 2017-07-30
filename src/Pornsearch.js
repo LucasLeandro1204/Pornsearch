@@ -17,11 +17,13 @@ const instaceofAbstractModule = ((module) => {
 });
 
 class Pornsearch {
-  constructor (driver) {
+  constructor (query, driver) {
     this.module = {};
     this.modules = [];
-    this.load();
-    this.driver(driver);
+
+    this.load()
+      .driver(driver)
+      .search(query);
   }
 
   support () {
@@ -33,7 +35,9 @@ class Pornsearch {
   }
 
   search (query) {
-    this.module.query = query;
+    if (Object.keys(this.module).length != 0) {
+      this.module.query = query;
+    }
 
     return this;
   }
@@ -43,10 +47,10 @@ class Pornsearch {
   }
 
   videos (page) {
-    return this._get(this.module.videoUrl(page), GIF);
+    return this._get(this.module.videoUrl(page), GIF, page || this.module.firstpage);
   }
 
-  _get (url, type) {
+  _get (url, type, page) {
     return new Promise((resolve, reject) => {
       axios.get(url)
         .then(({ body }) => {
@@ -60,7 +64,7 @@ class Pornsearch {
   }
 
   driver (driver = '') {
-    this.module = this.modules.find(module => module.name == driver);
+    this.module = this.modules.find(module => module.name == driver) || {};
 
     return this;
   }
@@ -70,6 +74,8 @@ class Pornsearch {
     let files = FS.readdirSync(dir, 'UTF-8');
 
     this.modules = files.map(file => instaceofAbstractModule(new (require(Path.resolve(dir, file)))));
+
+    return this;
   }
 };
 

@@ -11,6 +11,10 @@ class AbstractModule {
     throw new Error('This function must be overwrite');
   }
 
+  get firstpage () {
+    throw new Error('This function must be overwrite');
+  }
+
   videoUrl () {
     throw new Error(`${this.name} doesn't support video search`);
   }
