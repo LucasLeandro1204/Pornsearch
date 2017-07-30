@@ -1,20 +1,14 @@
 'use strict';
 
 const AbstractModule = require('./Core/AbstractModule');
+const Axios          = require('axios');
+const Cheerio        = require('cheerio');
 const FS             = require('fs');
 const Path           = require('path');
 
-const GIF = 'gif';
-const VIDEO = 'video';
+const GIF    = 'gif';
 const PARSER = 'Parser';
-
-const instaceofAbstractModule = ((module) => {
-  if (! (module instanceof AbstractModule)) {
-    throw new Error(`Module should be an instance of Abstract module`);
-  }
-
-  return module;
-});
+const VIDEO  = 'video';
 
 class Pornsearch {
   constructor (query, driver) {
@@ -52,7 +46,7 @@ class Pornsearch {
 
   _get (url, type, page) {
     return new Promise((resolve, reject) => {
-      axios.get(url)
+      Axios.get(url)
         .then(({ body }) => {
           resolve(this.module[type + PARSER](body));
         })
@@ -73,7 +67,7 @@ class Pornsearch {
     let dir = Path.resolve('./src/Modules');
     let files = FS.readdirSync(dir, 'UTF-8');
 
-    this.modules = files.map(file => instaceofAbstractModule(new (require(Path.resolve(dir, file)))));
+    this.modules = files.map(file => AbstractModule.extendsToMe(new (require(Path.resolve(dir, file)))));
 
     return this;
   }
