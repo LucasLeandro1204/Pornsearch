@@ -58,7 +58,13 @@ class Pornsearch {
   }
 
   driver (driver = '') {
-    this.module = this.modules.find(module => module.name == driver) || {};
+    let module = this.modules.find(module => module.name == driver);
+
+    if (! module) {
+      throw new Error(`We don't support ${driver} by now =/`);
+    }
+
+    this.module = module;
 
     return this;
   }
