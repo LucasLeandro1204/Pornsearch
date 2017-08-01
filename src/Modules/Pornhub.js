@@ -11,11 +11,11 @@ class Pornhub extends AbstractModule {
     return 1;
   }
 
-  videoUrl (page = 1) {
+  videoUrl (page) {
     return `http://www.pornhub.com/video/search?search=${this.query}&page=${page || this.firstpage}`;
   }
 
-  gifUrl (page = 1) {
+  gifUrl (page) {
     return `http://www.pornhub.com/gifs/search?search=${this.query}&page=${page || this.firstpage}`;
   }
 
