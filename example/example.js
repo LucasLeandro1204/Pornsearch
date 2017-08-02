@@ -1,12 +1,11 @@
 'use strict';
 
-const pornsearch = require('../');
-const pornhub = pornsearch.load('pornhub');
+const Pornsearch = require('../').search('tits');
 
-pornhub.videos('boobs')
-  .then((response) => {
-    console.log(response);
+Pornsearch.driver('sex').gifs()
+  .then((gifs) => {
+    console.log(gifs);
+
+    return Pornsearch.videos();
   })
-  .catch((error) => {
-    console.log(error);
-  });
+  .then(videos => console.log(videos));
