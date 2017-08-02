@@ -4,7 +4,7 @@ let AbstractModule = require('../Core/AbstractModule');
 
 class Redtube extends AbstractModule {
   get name () {
-    return 'redtube';
+    return 'Redtube';
   }
 
   get firstpage () {

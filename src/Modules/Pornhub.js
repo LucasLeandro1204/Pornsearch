@@ -4,7 +4,7 @@ let AbstractModule = require('../Core/AbstractModule');
 
 class Pornhub extends AbstractModule {
   get name () {
-    return 'pornhub';
+    return 'Pornhub';
   }
 
   get firstpage () {

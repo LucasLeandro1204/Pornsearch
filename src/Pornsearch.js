@@ -58,7 +58,7 @@ class Pornsearch {
   }
 
   driver (driver = '') {
-    let module = this.modules.find(module => module.name == driver);
+    let module = this.modules.find(module => module.name.toLowerCase() == driver.toLowerCase());
 
     if (! module) {
       throw new Error(`We don't support ${driver} by now =/`);
