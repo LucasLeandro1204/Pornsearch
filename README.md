@@ -117,7 +117,8 @@ Pornsearch.gifs(3);
 Change de query
 ```js
 Pornsearch.search('pussy')
-  .gifs(gifs => console.log(gifs)); 
+  .gifs()
+  .then(gifs => console.log(gifs));
 ```
 
 Log only url
