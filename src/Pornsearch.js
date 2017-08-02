@@ -11,7 +11,7 @@ const PARSER = 'Parser';
 const VIDEO  = 'video';
 
 class Pornsearch {
-  constructor (query, driver) {
+  constructor (query, driver = 'pornhub') {
     this.module = {};
     this.modules = [];
 
