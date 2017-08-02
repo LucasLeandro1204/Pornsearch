@@ -77,6 +77,10 @@ class Pornsearch {
 
     return this;
   }
+
+  static search (query) {
+    return new this(query);
+  }
 };
 
 module.exports = Pornsearch;

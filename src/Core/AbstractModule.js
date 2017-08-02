@@ -29,7 +29,7 @@ class AbstractModule {
     throw new Error('This function must be overwrite');
   }
 
-  static extendsToMe(module) {
+  static extendsToMe (module) {
     if (! (module instanceof this)) {
       throw new Error(`Module should be an instance of Abstract module`);
     }
