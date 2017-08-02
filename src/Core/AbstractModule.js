@@ -1,7 +1,5 @@
 'use strict';
 
-const Axios = require('axios');
-
 class AbstractModule {
   constructor () {
     this.query = '';
