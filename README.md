@@ -21,7 +21,7 @@ or (my favourite)
 ```js
 const Pornsearch = require('pornsearch').search('ass');
 
-pornsearch.gifs()
+Pornsearch.gifs()
   .then(gifs => console.log(gifs));
 ```
 
@@ -111,12 +111,18 @@ Pornsearch.videos()
 
 Specify the page to search on
 ```js
-pornhub.gifs(3);
+Pornsearch.gifs(3);
+```
+
+Change de query
+```js
+Pornsearch.search('pussy')
+  .gifs(gifs => console.log(gifs)); 
 ```
 
 Log only url
 ```js
-pornhub.gifs(3)
+Pornsearch.gifs(3)
   .then(gifs => console.log(gifs.map(gif => gif.url)));
 ```
 
