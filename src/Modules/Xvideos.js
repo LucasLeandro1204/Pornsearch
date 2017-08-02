@@ -8,7 +8,7 @@ class Xvideos extends AbstractModule {
   }
 
   get firstpage () {
-    return 1;
+    return 0;
   }
 
   videoUrl (page) {
