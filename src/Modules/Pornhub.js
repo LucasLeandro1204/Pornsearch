@@ -1,6 +1,6 @@
 'use strict';
 
-let AbstractModule = require('../Core/AbstractModule');
+const AbstractModule = require('../Core/AbstractModule');
 
 class Pornhub extends AbstractModule {
   get name () {

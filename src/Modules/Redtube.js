@@ -1,6 +1,6 @@
 'use strict';
 
-let AbstractModule = require('../Core/AbstractModule');
+const AbstractModule = require('../Core/AbstractModule');
 
 class Redtube extends AbstractModule {
   get name () {
