@@ -92,7 +92,7 @@ Pornsearch.driver(driver);
 
 To know the current driver
 ```js
-Pornsearch.current().name;
+Pornsearch.current();
 ```
 
 
@@ -123,23 +123,12 @@ pornhub.gifs(3)
 ## Output
 
 #### Videos
-To know what the current driver will return in video search
 
-```js
-  console.log(Pornsearch.current().video);
-```
-
-or check the [support table](#videos-structure)
+To know what the current driver will return in video search check the [videos structure](#videos-structure)
 
 #### Gifs
 
-To know what the current driver will return in gif search
-
-```js
-  console.log(Pornsearch.current().gif);
-```
-
-or check the [support table](#gifs-structure)
+To know what the current driver will return in gif search check the [gifs structure](#gifs-structure)
 
 __PORNHUB gifs in general are extremely heavy, so be a nice person and share webm__ (sex.com gifs are nice)
 
