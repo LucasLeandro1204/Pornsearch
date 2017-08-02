@@ -28,6 +28,10 @@ class Pornsearch {
     return this.module.name;
   }
 
+  get query () {
+    return this.module.query || '';
+  }
+
   search (query) {
     if (Object.keys(this.module).length != 0) {
       this.module.query = query;
@@ -58,6 +62,7 @@ class Pornsearch {
   }
 
   driver (driver = '') {
+    let currentQuery = this.query;
     let module = this.modules.find(module => module.name.toLowerCase() == driver.toLowerCase());
 
     if (! module) {
@@ -65,6 +70,7 @@ class Pornsearch {
     }
 
     this.module = module;
+    this.module.query = currentQuery;
 
     return this;
   }
