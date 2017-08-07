@@ -76,7 +76,7 @@ class Pornsearch {
   }
 
   load () {
-    let dir = Path.resolve('./src/Modules');
+    let dir = Path.join(__dirname, 'Modules');
     let files = FS.readdirSync(dir, 'UTF-8');
 
     this.modules = files.map(file => AbstractModule.extendsToMe(new (require(Path.resolve(dir, file)))));
