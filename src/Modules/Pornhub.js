@@ -35,7 +35,7 @@ class Pornhub extends AbstractModule {
           thumb: data.find('img').attr('data-mediumthumb').replace('(m=ecuK8daaaa)', '')
         } 
         : undefined;
-    }).get();
+    });
   }
 
   gifParser ($) {
