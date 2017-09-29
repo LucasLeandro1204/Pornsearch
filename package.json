@@ -2,8 +2,9 @@
   "name": "pornsearch",
   "version": "2.0.2",
   "description": "Easy way to search for porn content on internet",
-  "main": "src/pornsearch.js",
+  "main": "lib/index.js",
   "scripts": {
+    "build": "webpack",
     "test": "node ./example/example"
   },
   "keywords": [
@@ -32,5 +33,14 @@
   "dependencies": {
     "axios": "^0.15.3",
     "cheerio": "^0.22.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "path": "^0.12.7",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "webpack": "^3.6.0",
+    "webpack-visualizer-plugin": "^0.1.11"
   }
 }
