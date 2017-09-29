@@ -40,7 +40,6 @@
     "babel-preset-env": "^1.6.0",
     "path": "^0.12.7",
     "uglifyjs-webpack-plugin": "^0.4.6",
-    "webpack": "^3.6.0",
-    "webpack-visualizer-plugin": "^0.1.11"
+    "webpack": "^3.6.0"
   }
 }

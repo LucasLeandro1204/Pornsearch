@@ -1,9 +1,9 @@
 'use strict';
 
-const Pornsearch = require('../').search();
+const Pornsearch = require('../src/Pornsearch').search('amateur');
 
 Pornsearch.driver('sex').gifs()
-  .then((gifs) => {
+  .then(gifs => {
     console.log(gifs);
 
     return Pornsearch.videos();

@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const Visualizer = require('webpack-visualizer-plugin');
 
 module.exports = {
   entry: {
@@ -26,10 +25,7 @@ module.exports = {
         comments: false,
         sourceMap: true
       }
-    ),
-    new Visualizer({
-      filename: './statistics.html'
-    })
+    )
   ],
   output: {
     filename: 'index.js',
