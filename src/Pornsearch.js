@@ -3,8 +3,11 @@
 const AbstractModule = require('./Core/AbstractModule');
 const Axios          = require('axios');
 const Cheerio        = require('cheerio');
-const FS             = require('fs');
-const Path           = require('path');
+
+const pornhub = require('./Modules/Pornhub');
+const redtube = require('./Modules/Redtube');
+const sex     = require('./Modules/Sex');
+const xvideos = require('./Modules/Xvideos');
 
 const GIF    = 'gif';
 const PARSER = 'Parser';
@@ -62,24 +65,25 @@ class Pornsearch {
   }
 
   driver (driver = '') {
-    let currentQuery = this.query;
-    let module = this.modules.find(module => module.name.toLowerCase() == driver.toLowerCase());
+    const currentQuery = this.query;
+    const SearchModule = this.modules[driver.toLowerCase()];
 
-    if (! module) {
+    if (!SearchModule) {
       throw new Error(`We don't support ${driver} by now =/`);
     }
 
-    this.module = module;
-    this.module.query = currentQuery;
+    this.module = new SearchModule(currentQuery);
 
     return this;
   }
 
   load () {
-    let dir = Path.join(__dirname, 'Modules');
-    let files = FS.readdirSync(dir, 'UTF-8');
-
-    this.modules = files.map(file => AbstractModule.extendsToMe(new (require(Path.resolve(dir, file)))));
+    this.modules = {
+      pornhub,
+      redtube,
+      sex,
+      xvideos
+    };
 
     return this;
   }
@@ -87,6 +91,6 @@ class Pornsearch {
   static search (query) {
     return new this(query);
   }
-};
+}
 
 module.exports = Pornsearch;

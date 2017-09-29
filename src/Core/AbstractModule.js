@@ -1,8 +1,8 @@
 'use strict';
 
 class AbstractModule {
-  constructor () {
-    this.query = '';
+  constructor (query = '') {
+    this.query = query;
   }
 
   get name () {
