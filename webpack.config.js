@@ -1,15 +1,11 @@
 const path = require('path');
-const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: {
     app: './src/Pornsearch.js'
   },
-  devtool: 'source-map',
-  devServer: {
-    contentBase: './lib'
-  },
+  target: 'node',
   module: {
     loaders: [
       {
@@ -20,12 +16,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new UglifyJsPlugin(
-      {
-        comments: false,
-        sourceMap: true
-      }
-    )
+    new UglifyJsPlugin({ comments: false })
   ],
   output: {
     filename: 'index.js',
