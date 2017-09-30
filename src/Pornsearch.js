@@ -1,26 +1,22 @@
-'use strict';
+import Axios from 'axios';
+import Cheerio from 'cheerio';
 
-const AbstractModule = require('./Core/AbstractModule');
-const Axios          = require('axios');
-const Cheerio        = require('cheerio');
-
-const pornhub = require('./Modules/Pornhub');
-const redtube = require('./Modules/Redtube');
-const sex     = require('./Modules/Sex');
-const xvideos = require('./Modules/Xvideos');
+import pornhub from './Modules/Pornhub';
+import redtube from './Modules/Redtube';
+import sex from './Modules/Sex';
+import xvideos from './Modules/Xvideos';
 
 const GIF    = 'gif';
 const PARSER = 'Parser';
 const VIDEO  = 'video';
 
 class Pornsearch {
-  constructor (query, driver = 'pornhub') {
+  constructor (query, driver) {
     this.module = {};
     this.modules = [];
 
     this.load()
-      .driver(driver)
-      .search(query);
+      .driver(query, driver);
   }
 
   support () {
@@ -33,14 +29,6 @@ class Pornsearch {
 
   get query () {
     return this.module.query || '';
-  }
-
-  search (query) {
-    if (Object.keys(this.module).length != 0) {
-      this.module.query = query;
-    }
-
-    return this;
   }
 
   gifs (page) {
@@ -64,15 +52,14 @@ class Pornsearch {
     });
   }
 
-  driver (driver = '') {
-    const currentQuery = this.query;
+  driver (query, driver = 'pornhub') {
     const SearchModule = this.modules[driver.toLowerCase()];
 
     if (!SearchModule) {
       throw new Error(`We don't support ${driver} by now =/`);
     }
 
-    this.module = new SearchModule(currentQuery);
+    this.module = new SearchModule(query);
 
     return this;
   }
@@ -89,8 +76,8 @@ class Pornsearch {
   }
 
   static search (query) {
-    return new this(query);
+    return new Pornsearch(query);
   }
 }
 
-module.exports = Pornsearch;
+export default Pornsearch;

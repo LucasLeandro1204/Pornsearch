@@ -1,5 +1,3 @@
-'use strict';
-
 class AbstractModule {
   constructor (query = '') {
     this.query = query;
@@ -36,6 +34,6 @@ class AbstractModule {
 
     return module;
   }
-};
+}
 
-module.exports = AbstractModule;
+export default AbstractModule;
