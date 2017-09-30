@@ -1,6 +1,4 @@
-'use strict';
-
-const AbstractModule = require('../Core/AbstractModule');
+import AbstractModule from '../Core/AbstractModule';
 
 class Sex extends AbstractModule {
   get name () {
@@ -20,12 +18,12 @@ class Sex extends AbstractModule {
   }
 
   videoParser ($) {
-    let videos = $('#masonry_container .masonry_box').has('.duration');
+    const videos = $('#masonry_container .masonry_box').has('.duration');
 
     return videos.map((i, video) => {
       video = $(video);
       
-      let title = video.find('.title a');
+      const title = video.find('.title a');
       
       return {
         title: title.text(),
@@ -37,12 +35,12 @@ class Sex extends AbstractModule {
   }
 
   gifParser ($) {
-    let gifs = $('#masonry_container .masonry_box').not('.ad_box');
+    const gifs = $('#masonry_container .masonry_box').not('.ad_box');
 
     return gifs.map((i, gif) => {
       gif = $(gif);
 
-      let data = gif.find('.image');
+      const data = gif.find('.image');
 
       return {
         title: data.attr('alt'),
@@ -50,6 +48,6 @@ class Sex extends AbstractModule {
       }
     }).get();
   }
-};
+}
 
-module.exports = Sex;
+export default Sex;

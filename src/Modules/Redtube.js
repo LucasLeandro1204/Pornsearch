@@ -1,6 +1,4 @@
-'use strict';
-
-const AbstractModule = require('../Core/AbstractModule');
+import AbstractModule from '../Core/AbstractModule';
 
 class Redtube extends AbstractModule {
   get name () {
@@ -25,6 +23,6 @@ class Redtube extends AbstractModule {
       };
     });
   }
-};
+}
 
-module.exports = Redtube;
+export default Redtube;

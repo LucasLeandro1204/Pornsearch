@@ -1,6 +1,4 @@
-'use strict';
-
-const AbstractModule = require('../Core/AbstractModule');
+import AbstractModule from '../Core/AbstractModule';
 
 class Xvideos extends AbstractModule {
   get name () {
@@ -16,11 +14,11 @@ class Xvideos extends AbstractModule {
   }
 
   videoParser ($) {
-    let videos = $('#content .mozaique .thumb-block');
+    const videos = $('#content .mozaique .thumb-block');
 
     return videos.map((i, video) => {
       video = $.load($(video).find('.thumb script').text().match(/(<.*>)/).pop());
-      let description = video.find('p');
+      const description = video.find('p');
 
       return {
         title: description.eq(0).text(),
@@ -30,6 +28,6 @@ class Xvideos extends AbstractModule {
       };
     }).get();
   }
-};
+}
 
-module.exports = Xvideos;
+export default Xvideos;

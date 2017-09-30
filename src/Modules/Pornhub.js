@@ -1,6 +1,4 @@
-'use strict';
-
-const AbstractModule = require('../Core/AbstractModule');
+import AbstractModule from '../Core/AbstractModule';
 
 class Pornhub extends AbstractModule {
   get name () {
@@ -20,12 +18,12 @@ class Pornhub extends AbstractModule {
   }
 
   videoParser ($) {
-    let videos = $('ul.videos.search-video-thumbs li');
+    const videos = $('ul.videos.search-video-thumbs li');
 
     return videos.map((i, video) => {
       video = $(video);
 
-      let data = video.find('a').eq(0);
+      const data = video.find('a').eq(0);
 
       return data.length 
         ? {
@@ -39,12 +37,12 @@ class Pornhub extends AbstractModule {
   }
 
   gifParser ($) {
-    let gifs = $('ul.gifs.gifLink li');
+    const gifs = $('ul.gifs.gifLink li');
 
     return gifs.map((i, gif) => {
       gif = $(gif);
       
-      let data = gif.find('a');
+      const data = gif.find('a');
 
       return {
         title: data.find('span').text(),
@@ -53,6 +51,6 @@ class Pornhub extends AbstractModule {
       };
     }).get();
   }
-};
+}
 
-module.exports = Pornhub;
+export default Pornhub;

@@ -1,23 +1,22 @@
-'use strict';
+import Axios from 'axios';
+import Cheerio from 'cheerio';
 
-const AbstractModule = require('./Core/AbstractModule');
-const Axios          = require('axios');
-const Cheerio        = require('cheerio');
-const FS             = require('fs');
-const Path           = require('path');
+import pornhub from './Modules/Pornhub';
+import redtube from './Modules/Redtube';
+import sex from './Modules/Sex';
+import xvideos from './Modules/Xvideos';
 
 const GIF    = 'gif';
 const PARSER = 'Parser';
 const VIDEO  = 'video';
 
 class Pornsearch {
-  constructor (query, driver = 'pornhub') {
+  constructor (query, driver) {
     this.module = {};
     this.modules = [];
 
     this.load()
-      .driver(driver)
-      .search(query);
+      .driver(query, driver);
   }
 
   support () {
@@ -30,14 +29,6 @@ class Pornsearch {
 
   get query () {
     return this.module.query || '';
-  }
-
-  search (query) {
-    if (Object.keys(this.module).length != 0) {
-      this.module.query = query;
-    }
-
-    return this;
   }
 
   gifs (page) {
@@ -61,32 +52,32 @@ class Pornsearch {
     });
   }
 
-  driver (driver = '') {
-    let currentQuery = this.query;
-    let module = this.modules.find(module => module.name.toLowerCase() == driver.toLowerCase());
+  driver (query, driver = 'pornhub') {
+    const SearchModule = this.modules[driver.toLowerCase()];
 
-    if (! module) {
+    if (!SearchModule) {
       throw new Error(`We don't support ${driver} by now =/`);
     }
 
-    this.module = module;
-    this.module.query = currentQuery;
+    this.module = new SearchModule(query);
 
     return this;
   }
 
   load () {
-    let dir = Path.join(__dirname, 'Modules');
-    let files = FS.readdirSync(dir, 'UTF-8');
-
-    this.modules = files.map(file => AbstractModule.extendsToMe(new (require(Path.resolve(dir, file)))));
+    this.modules = {
+      pornhub,
+      redtube,
+      sex,
+      xvideos
+    };
 
     return this;
   }
 
   static search (query) {
-    return new this(query);
+    return new Pornsearch(query);
   }
-};
+}
 
-module.exports = Pornsearch;
+export default Pornsearch;
