@@ -10,10 +10,9 @@ const VIDEO = 'video';
 class Pornsearch {
   constructor (query, driver) {
     this.module = {};
-    this.modules = [];
+    this.modules = Modules;
 
-    this.load()
-      .driver(query, driver);
+    this.driver(query, driver);
   }
 
   support () {
@@ -39,7 +38,7 @@ class Pornsearch {
   _get (url, type, page) {
     return new Promise((resolve, reject) => {
       Axios.get(url)
-        .then(({data: body}) => {
+        .then(({ data: body }) => {
           resolve(this.module[type + PARSER](Cheerio.load(body), body));
         })
         .catch((error) => {
@@ -59,12 +58,6 @@ class Pornsearch {
     }
 
     this.module = new SearchModule(query);
-
-    return this;
-  }
-
-  load () {
-    this.modules = Modules;
 
     return this;
   }
