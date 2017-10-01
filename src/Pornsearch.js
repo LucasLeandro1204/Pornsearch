@@ -1,10 +1,7 @@
 import Axios from 'axios';
 import Cheerio from 'cheerio';
 
-import pornhub from './Modules/Pornhub';
-import redtube from './Modules/Redtube';
-import sex from './Modules/Sex';
-import xvideos from './Modules/Xvideos';
+import {pornhub, redtube, sex, xvideos} from './Modules';
 
 const GIF    = 'gif';
 const PARSER = 'Parser';
