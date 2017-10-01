@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "webpack --progress",
+    "lint": "semistandard --fix | snazzy",
     "test": "node ./example/example"
   },
   "keywords": [
@@ -39,6 +40,8 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "path": "^0.12.7",
+    "semistandard": "^11.0.0",
+    "snazzy": "^7.0.0",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.6.0"
   }
