@@ -28,7 +28,7 @@ class AbstractModule {
   }
 
   static extendsToMe (module) {
-    if (! (module instanceof this)) {
+    if (!(module instanceof this)) {
       throw new Error(`Module should be an instance of Abstract module`);
     }
 

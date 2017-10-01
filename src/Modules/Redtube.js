@@ -19,7 +19,7 @@ class Redtube extends AbstractModule {
         title: video.title,
         url: video.url,
         duration: video.duration,
-        thumb: video.default_thumb,
+        thumb: video.default_thumb
       };
     });
   }

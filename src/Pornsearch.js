@@ -1,22 +1,18 @@
 import Axios from 'axios';
 import Cheerio from 'cheerio';
 
-import pornhub from './Modules/Pornhub';
-import redtube from './Modules/Redtube';
-import sex from './Modules/Sex';
-import xvideos from './Modules/Xvideos';
+import Modules from './Modules';
 
-const GIF    = 'gif';
+const GIF = 'gif';
 const PARSER = 'Parser';
-const VIDEO  = 'video';
+const VIDEO = 'video';
 
 class Pornsearch {
   constructor (query, driver) {
     this.module = {};
-    this.modules = [];
+    this.modules = Modules;
 
-    this.load()
-      .driver(query, driver);
+    this.driver(query, driver);
   }
 
   support () {
@@ -47,7 +43,9 @@ class Pornsearch {
         })
         .catch((error) => {
           console.log(error);
-          reject(`No results for search related to ${this.module.query} in page ${page}`);
+          reject(
+            new Error(`No results for search related to ${this.module.query} in page ${page}`)
+          );
         });
     });
   }
@@ -60,17 +58,6 @@ class Pornsearch {
     }
 
     this.module = new SearchModule(query);
-
-    return this;
-  }
-
-  load () {
-    this.modules = {
-      pornhub,
-      redtube,
-      sex,
-      xvideos
-    };
 
     return this;
   }

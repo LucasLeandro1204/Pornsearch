@@ -25,13 +25,13 @@ class Pornhub extends AbstractModule {
 
       const data = video.find('a').eq(0);
 
-      return data.length 
+      return data.length
         ? {
           title: data.find('img').attr('title'),
           url: 'http://pornhub.com/' + data.attr('href'),
           duration: data.find('.duration').text(),
           thumb: data.find('img').attr('data-mediumthumb').replace('(m=ecuK8daaaa)', '')
-        } 
+        }
         : undefined;
     }).get();
   }
@@ -41,7 +41,7 @@ class Pornhub extends AbstractModule {
 
     return gifs.map((i, gif) => {
       gif = $(gif);
-      
+
       const data = gif.find('a');
 
       return {
