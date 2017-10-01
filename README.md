@@ -1,5 +1,7 @@
 # Pornsearch
 
+[![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
+
 Easy way to search for porn content
 
 #### If you have any suggestions of a website, open an issue!
