@@ -13,13 +13,13 @@ class Redtube extends AbstractModule {
     return `https://api.redtube.com/?data=redtube.Videos.searchVideos&output=json&search=${this.query}&thumbsize=big&page=${page || this.firstpage}`;
   }
 
-  videoParser ($, { videos }) {
-    return videos.map(({ video }) => {
+  videoParser ($, {videos}) {
+    return videos.map(({video}) => {
       return {
         title: video.title,
         url: video.url,
         duration: video.duration,
-        thumb: video.default_thumb,
+        thumb: video.default_thumb
       };
     });
   }

@@ -22,9 +22,9 @@ class Sex extends AbstractModule {
 
     return videos.map((i, video) => {
       video = $(video);
-      
+
       const title = video.find('.title a');
-      
+
       return {
         title: title.text(),
         url: 'http://www.sex.com' + title.attr('href'),
@@ -45,7 +45,7 @@ class Sex extends AbstractModule {
       return {
         title: data.attr('alt'),
         url: data.data('src')
-      }
+      };
     }).get();
   }
 }
