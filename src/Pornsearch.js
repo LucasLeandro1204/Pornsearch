@@ -1,11 +1,11 @@
 import Axios from 'axios';
 import Cheerio from 'cheerio';
 
-import {pornhub, redtube, sex, xvideos} from './Modules';
+import Modules from './Modules';
 
-const GIF    = 'gif';
+const GIF = 'gif';
 const PARSER = 'Parser';
-const VIDEO  = 'video';
+const VIDEO = 'video';
 
 class Pornsearch {
   constructor (query, driver) {
@@ -39,12 +39,14 @@ class Pornsearch {
   _get (url, type, page) {
     return new Promise((resolve, reject) => {
       Axios.get(url)
-        .then(({ data: body }) => {
+        .then(({data: body}) => {
           resolve(this.module[type + PARSER](Cheerio.load(body), body));
         })
         .catch((error) => {
           console.log(error);
-          reject(`No results for search related to ${this.module.query} in page ${page}`);
+          reject(
+            new Error(`No results for search related to ${this.module.query} in page ${page}`)
+          );
         });
     });
   }
@@ -62,12 +64,7 @@ class Pornsearch {
   }
 
   load () {
-    this.modules = {
-      pornhub,
-      redtube,
-      sex,
-      xvideos
-    };
+    this.modules = Modules;
 
     return this;
   }

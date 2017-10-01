@@ -1,4 +1,11 @@
-export {default as pornhub} from './Pornhub';
-export {default as redtube} from './Redtube';
-export {default as sex} from './Sex';
-export {default as xvideos} from './Xvideos';
+import pornhub from './Pornhub';
+import redtube from './Redtube';
+import sex from './Sex';
+import xvideos from './Xvideos';
+
+export default {
+  pornhub,
+  redtube,
+  sex,
+  xvideos
+};
