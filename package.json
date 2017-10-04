@@ -2,7 +2,7 @@
   "name": "pornsearch",
   "version": "2.1.1",
   "description": "Easy way to search for porn content on internet",
-  "main": "dist/pornsearch.js",
+  "main": "src/Pornsearch.js",
   "scripts": {
     "build": "webpack --progress",
     "lint": "semistandard --fix | snazzy",

@@ -1,6 +1,6 @@
 'use strict';
 
-const Pornsearch = require('../dist').default;
+const Pornsearch = require('../lib').default;
 const PornDriver = Pornsearch.search('amateur');
 
 PornDriver.driver('sex').gifs()
