@@ -1,6 +1,6 @@
 {
   "name": "pornsearch",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Easy way to search for porn content on internet",
   "main": "src/Pornsearch.js",
   "scripts": {
