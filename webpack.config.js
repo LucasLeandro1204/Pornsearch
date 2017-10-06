@@ -19,8 +19,8 @@ module.exports = {
     new UglifyJsPlugin({ comments: false })
   ],
   output: {
-    filename: 'index.js',
-    path: path.resolve(__dirname, './lib'),
+    filename: 'pornsearch.min.js',
+    path: path.resolve(__dirname, './dist'),
     library: 'Pornsearch',
     libraryTarget: 'umd'
   }
