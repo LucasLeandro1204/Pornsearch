@@ -86,13 +86,21 @@ There's two ways to use Pornsearch:
 You can create a new instance with two parameters: the first one is the query, what you want to search, the second one is the driver (Pornhub default).
 
 ```js
-const Pornsearch = require('pornsearch');
+const Pornsearch = require('pornsearch').default;
+const Searcher = new Pornsearch(query, driver = 'pornhub');
+```
+
+```js
+// Using import
+import Pornsearch from 'pornsearch';
+
 const Searcher = new Pornsearch(query, driver = 'pornhub');
 ```
 
 Or you can use the static search method, but you can pass only the query, the driver will be pornhub.
+
 ```js
-const Pornsearch = require('pornsearch').search(query);
+const Pornsearch = require('pornsearch').default.search(query);
 ```
 
 But you always can change the current driver:
