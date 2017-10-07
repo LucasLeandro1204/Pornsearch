@@ -11,7 +11,17 @@ Easy way to search for porn content
 You can do it in two ways:
 
 ```js
-const Pornsearch = require('pornsearch');
+const Pornsearch = require('pornsearch').default;
+const Searcher = new Pornsearch('tits');
+
+Searcher.videos()
+  .then(videos => console.log(videos));
+```
+
+```js
+// using import
+import Pornsearch from 'pornsearch';
+
 const Searcher = new Pornsearch('tits');
 
 Searcher.videos()
@@ -21,7 +31,7 @@ Searcher.videos()
 or (my favourite)
 
 ```js
-const Pornsearch = require('pornsearch').search('ass');
+const Pornsearch = require('pornsearch').default.search('ass');
 
 Pornsearch.gifs()
   .then(gifs => console.log(gifs));
