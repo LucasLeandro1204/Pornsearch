@@ -20,15 +20,13 @@ class Pornhub extends AbstractModule {
   videoParser ($) {
     const videos = $('ul.videos.search-video-thumbs li');
 
-    return videos.map((i, video) => {
-      video = $(video);
-
-      const data = video.find('a').eq(0);
+    return videos.map(i => {
+      const data = videos.eq(i);
 
       return data.length
         ? {
-          title: data.find('img').attr('title'),
-          url: 'http://pornhub.com/' + data.attr('href'),
+          title: data.find('a').text().trim(),
+          url: 'http://pornhub.com' + data.find('a').eq(0).attr('href'),
           duration: data.find('.duration').text(),
           thumb: data.find('img').attr('data-mediumthumb').replace(/\([^)]*\)/g, '')
         }
