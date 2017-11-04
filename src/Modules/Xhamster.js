@@ -16,7 +16,7 @@ class Xhamster extends AbstractModule {
   videoParser ($) {
     const videos = $('#searchRes2 .video');
 
-    return videos.map(i => {
+    return videos.map((i) => {
       const data = videos.eq(i);
 
       return data.length
