@@ -24,7 +24,7 @@ class Xhamster extends AbstractModule {
           title: data.find('a u').text().trim(),
           url: data.find('a').eq(0).attr('href'),
           duration: data.find('a b').text(),
-          thumb: data.find('.thumb').attr('src').replace(/\([^)]*\)/g, '')
+          thumb: data.find('.thumb').attr('src')
         }
         : undefined;
     }).get();
