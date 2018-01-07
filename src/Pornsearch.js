@@ -50,13 +50,13 @@ class Pornsearch {
   }
 
   driver (query, driver = 'pornhub') {
-    const SearchModule = this.modules[driver.toLowerCase()];
+    const PornModule = this.modules[driver.toLowerCase()];
 
-    if (!SearchModule) {
+    if (!PornModule) {
       throw new Error(`We don't support ${driver} by now =/`);
     }
 
-    this.module = new SearchModule(query);
+    this.module = new PornModule(query);
 
     return this;
   }
