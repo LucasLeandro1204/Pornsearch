@@ -1,6 +1,7 @@
+import Video from '@/Core/VideoMixin';
 import AbstractModule from '@/Core/AbstractModule';
 
-class Redtube extends AbstractModule {
+class Redtube extends AbstractModule.with(Video) {
   get name () {
     return 'Redtube';
   }
