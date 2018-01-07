@@ -43,7 +43,7 @@ Pornsearch.gifs()
 
 | Site (Module name)              | Videos | Gifs |
 |:--------------------------------|:------:|:----:|
-| [pornhub](http://pornhub.com/)  |   X    |  X   |  
+| [pornhub](http://pornhub.com/)  |   X    |  X   |
 | [sex](http://sex.com/)          |   X    |  X   |
 | [redtube](https://redtube.com/) |   X    |      |
 | [xvideos](http://xvideos.com/)  |   X    |      |
@@ -54,7 +54,7 @@ What will return in video search
 
 | Site (Module name)              | Title | Url | Thumbnail | Duration |
 |:--------------------------------|:-----:|:---:|:---------:|:--------:|
-| [pornhub](http://pornhub.com/)  |   X   |  X  |     X     |    X     | 
+| [pornhub](http://pornhub.com/)  |   X   |  X  |     X     |    X     |
 | [sex](http://sex.com/)          |   X   |  X  |     X     |    X     |
 | [redtube](https://redtube.com/) |   X   |  X  |     X     |    X     |
 | [xvideos](http://xvideos.com/)  |   X   |  X  |     X     |    X     |
@@ -115,7 +115,6 @@ To know the current driver
 Pornsearch.current();
 ```
 
-
 ## Search
 
 It's easy to search for porn content with Pornsearch =)
@@ -163,4 +162,3 @@ If has error in whenever search, will be throw an error:
 ```Markdown
 No results for search related to *query* in page *page*
 ```
-
