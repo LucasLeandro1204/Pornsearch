@@ -1,4 +1,4 @@
-import AbstractModule from '../Core/AbstractModule';
+import AbstractModule from '@/Core/AbstractModule';
 
 class Redtube extends AbstractModule {
   get name () {

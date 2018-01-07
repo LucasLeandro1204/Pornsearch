@@ -1,4 +1,4 @@
-import AbstractModule from '../Core/AbstractModule';
+import AbstractModule from '@/Core/AbstractModule';
 
 class Xvideos extends AbstractModule {
   get name () {

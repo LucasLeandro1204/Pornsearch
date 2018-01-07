@@ -1,4 +1,4 @@
-import AbstractModule from '../Core/AbstractModule';
+import AbstractModule from '@/Core/AbstractModule';
 
 class Pornhub extends AbstractModule {
   get name () {

@@ -1,4 +1,4 @@
-import AbstractModule from '../Core/AbstractModule';
+import AbstractModule from '@/Core/AbstractModule';
 
 class Sex extends AbstractModule {
   get name () {
