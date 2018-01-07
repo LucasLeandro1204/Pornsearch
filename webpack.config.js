@@ -8,8 +8,8 @@ module.exports = {
 
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-    },
+      '@': path.resolve(__dirname, 'src')
+    }
   },
 
   target: 'node',
@@ -25,7 +25,7 @@ module.exports = {
   },
 
   plugins: [
-  //  new UglifyJsPlugin({ comments: false })
+    new UglifyJsPlugin({ comments: false })
   ],
 
   output: {
