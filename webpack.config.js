@@ -14,7 +14,6 @@ module.exports = {
 
   target: 'node',
 
-
   module: {
     loaders: [
       {
@@ -24,9 +23,9 @@ module.exports = {
       }
     ]
   },
-  
+
   plugins: [
-    new UglifyJsPlugin({ comments: false })
+  //  new UglifyJsPlugin({ comments: false })
   ],
 
   output: {
