@@ -4,6 +4,7 @@
   "description": "Easy way to search for porn content on internet",
   "main": "dist/pornsearch.min.js",
   "scripts": {
+    "watch": "webpack --progress --watch",
     "build": "webpack --progress",
     "lint": "semistandard --fix | snazzy",
     "test": "node ./example/example"
