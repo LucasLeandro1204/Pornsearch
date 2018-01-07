@@ -3,6 +3,9 @@
   "version": "2.2.5",
   "description": "Easy way to search for porn content on internet",
   "main": "dist/pornsearch.min.js",
+  "files": [
+    "dist/pornsearch.min.js"
+  ],
   "scripts": {
     "watch": "webpack --progress --watch",
     "build": "webpack --progress",
