@@ -18,8 +18,7 @@ class Xvideos extends AbstractModule.with(Video) {
     const videos = $('#content .mozaique .thumb-block');
 
     return videos.map((i, video) => {
-      const description = $.load($(video).find('.thumb script').text().match(/(<.*>)/)
-        .pop()).find('p');
+      const description = $.load($(video).find('.thumb script').text().match(/(<.*>)/).pop()).find('p');
 
       return {
         title: description.eq(0).text(),
