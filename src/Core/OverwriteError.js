@@ -4,6 +4,6 @@ class OverwriteError extends Error {
     this.name = this.constructor.name;
     Error.captureStackTrace(this, this.constructor);
   }
-};
+}
 
 export default OverwriteError;

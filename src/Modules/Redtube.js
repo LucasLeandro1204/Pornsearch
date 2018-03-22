@@ -1,3 +1,5 @@
+/* eslint max-len: 0 */
+
 import Video from 'Core/VideoMixin';
 import AbstractModule from 'Core/AbstractModule';
 
@@ -15,14 +17,12 @@ class Redtube extends AbstractModule.with(Video) {
   }
 
   videoParser ($, { videos }) {
-    return videos.map(({ video }) => {
-      return {
-        title: video.title,
-        url: video.url,
-        duration: video.duration,
-        thumb: video.default_thumb
-      };
-    });
+    return videos.map(({ video }) => ({
+      title: video.title,
+      url: video.url,
+      duration: video.duration,
+      thumb: video.default_thumb,
+    }));
   }
 }
 

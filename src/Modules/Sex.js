@@ -29,9 +29,9 @@ class Sex extends AbstractModule.with(Gif, Video) {
 
       return {
         title: title.text(),
-        url: 'http://www.sex.com' + title.attr('href'),
+        url: `http://www.sex.com${title.attr('href')}`,
         duration: video.find('.duration').text(),
-        thumb: video.find('.image').data('src')
+        thumb: video.find('.image').data('src'),
       };
     }).get();
   }
@@ -46,7 +46,7 @@ class Sex extends AbstractModule.with(Gif, Video) {
 
       return {
         title: data.attr('alt'),
-        url: data.data('src')
+        url: data.data('src'),
       };
     }).get();
   }
