@@ -1,9 +1,11 @@
+import OverwriteError from 'Core/OverwriteError';
+
 export default (Father) => class extends Father {
   videoUrl () {
-    throw new Error('This function must be overwrite');
+    throw new OverwriteError;
   }
 
   videoParser () {
-    throw new Error('This function must be overwrite');
+    throw new OverwriteError;
   }
 };
