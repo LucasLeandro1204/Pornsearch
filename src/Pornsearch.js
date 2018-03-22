@@ -41,7 +41,7 @@ class Pornsearch {
           resolve(this.module[type + PARSER](Cheerio.load(body), body));
         })
         .catch((error) => {
-          console.log(error);
+          console.warn(error);
           reject(
             new Error(`No results for search related to ${this.module.query} in page ${page}`)
           );
@@ -52,7 +52,7 @@ class Pornsearch {
   driver (query, driver = 'pornhub') {
     const PornModule = this.modules[driver.toLowerCase()];
 
-    if (!PornModule) {
+    if (! PornModule) {
       throw new Error(`We don't support ${driver} by now =/`);
     }
 
