@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import Cheerio from 'cheerio';
-import modules from 'core/Modules';
+import Modules from 'core/Modules';
 
 const GIF = 'gif';
 const PARSER = 'Parser';
@@ -9,7 +9,7 @@ const VIDEO = 'video';
 class Pornsearch {
   constructor (query, driver) {
     this.module = {};
-    this.modules = modules;
+    this.modules = Modules;
 
     this.driver(driver, query);
   }

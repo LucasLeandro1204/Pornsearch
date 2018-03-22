@@ -25,7 +25,7 @@ class Pornhub extends AbstractModule.with(Gif, Video) {
     return videos.map((i) => {
       const data = videos.eq(i);
 
-      if (! data.length) {
+      if (!data.length) {
         return;
       }
 
