@@ -2,13 +2,12 @@
   "name": "pornsearch",
   "version": "2.3.0",
   "description": "Easy way to search for porn content on internet",
-  "main": "dist/pornsearch.min.js",
+  "main": "dist/Pornsearch",
   "files": [
-    "dist/pornsearch.min.js"
+    "dist/*"
   ],
   "scripts": {
-    "watch": "webpack --progress --watch",
-    "build": "webpack --progress",
+    "build": "rm -r /dist -f && babel src --out-dir dist --copy-files",
     "lint": "semistandard --fix | snazzy",
     "test": "node ./example/example"
   },
@@ -40,13 +39,14 @@
     "cheerio": "^0.22.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-module-resolver": "^3.1.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
     "path": "^0.12.7",
     "semistandard": "^11.0.0",
-    "snazzy": "^7.0.0",
-    "uglifyjs-webpack-plugin": "^0.4.6",
-    "webpack": "^3.6.0"
+    "snazzy": "^7.0.0"
   }
 }
