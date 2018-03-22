@@ -1,6 +1,6 @@
-import Gif from '@/Core/GifMixin';
-import Video from '@/Core/VideoMixin';
-import AbstractModule from '@/Core/AbstractModule';
+import Gif from 'Core/GifMixin';
+import Video from 'Core/VideoMixin';
+import AbstractModule from 'Core/AbstractModule';
 
 class Pornhub extends AbstractModule.with(Gif, Video) {
   get name () {

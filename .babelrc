@@ -1,5 +1,16 @@
 {
-  "presets":[
-    "env"
+  "presets": [
+    ["env", {
+      "targets": [
+        "node"
+      ]
+    }]
+  ],
+  "plugins": [
+    "transform-runtime",
+    "add-module-exports",
+    ["module-resolver", {
+      "root": ["./src"]
+    }]
   ]
 }
