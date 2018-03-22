@@ -38,7 +38,13 @@ class Pornsearch {
     return new Promise((resolve, reject) => {
       Axios.get(url)
         .then(({ data: body }) => {
-          resolve(this.module[type + PARSER](Cheerio.load(body), body));
+          const data = this.module[type + PARSER](Cheerio.load(body), body);
+
+          if (!data.length) {
+            throw new Error('No results');
+          }
+
+          resolve(data);
         })
         .catch((error) => {
           console.warn(error);
