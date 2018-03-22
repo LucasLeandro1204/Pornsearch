@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import Cheerio from 'cheerio';
-import Modules from '@/Core/Modules';
+import Modules from 'Core/Modules';
 
 const GIF = 'gif';
 const PARSER = 'Parser';
