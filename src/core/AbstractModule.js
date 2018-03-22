@@ -1,4 +1,4 @@
-import OverwriteError from 'Core/OverwriteError';
+import OverwriteError from 'core/OverwriteError';
 
 class AbstractModule {
   constructor (query = '') {

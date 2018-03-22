@@ -1,5 +1,5 @@
-import Video from 'Core/VideoMixin';
-import AbstractModule from 'Core/AbstractModule';
+import Video from 'core/VideoMixin';
+import AbstractModule from 'core/AbstractModule';
 
 class Xvideos extends AbstractModule.with(Video) {
   get name () {

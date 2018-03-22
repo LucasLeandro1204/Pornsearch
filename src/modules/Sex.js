@@ -1,6 +1,6 @@
-import Gif from 'Core/GifMixin';
-import Video from 'Core/VideoMixin';
-import AbstractModule from 'Core/AbstractModule';
+import Gif from 'core/GifMixin';
+import Video from 'core/VideoMixin';
+import AbstractModule from 'core/AbstractModule';
 
 class Sex extends AbstractModule.with(Gif, Video) {
   get name () {

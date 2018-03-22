@@ -1,7 +1,7 @@
 /* eslint max-len: 0 */
 
-import Video from 'Core/VideoMixin';
-import AbstractModule from 'Core/AbstractModule';
+import Video from 'core/VideoMixin';
+import AbstractModule from 'core/AbstractModule';
 
 class Redtube extends AbstractModule.with(Video) {
   get name () {
