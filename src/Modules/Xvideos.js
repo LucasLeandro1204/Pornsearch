@@ -18,13 +18,14 @@ class Xvideos extends AbstractModule.with(Video) {
     const videos = $('#content .mozaique .thumb-block');
 
     return videos.map((i, video) => {
-      const description = $.load($(video).find('.thumb script').text().match(/(<.*>)/).pop()).find('p');
+      const cache = $(video);
+      const title = cache.find('p a').eq(0);
 
       return {
-        title: description.eq(0).text(),
-        url: `https://xvideos.com${$('a').attr('href')}`,
-        duration: description.find('strong').text(),
-        thumb: $('img').attr('src'),
+        title: title.text(),
+        url: `https://xvideos.com${title.attr('href')}`,
+        duration: cache.find('.duration').text(),
+        thumb: cache.find('.thumb img').data('src').replace('thumbs169', 'thumbs169lll').replace('THUMBNUM', '5'),
       };
     }).get();
   }
