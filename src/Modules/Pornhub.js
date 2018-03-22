@@ -40,9 +40,7 @@ class Pornhub extends AbstractModule.with(Gif, Video) {
     const gifs = $('ul.gifs.gifLink li');
 
     return gifs.map((i, gif) => {
-      gif = $(gif);
-
-      const data = gif.find('a');
+      const data = $(gif).find('a');
 
       return {
         title: data.find('span').text(),

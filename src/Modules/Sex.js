@@ -23,15 +23,14 @@ class Sex extends AbstractModule.with(Gif, Video) {
     const videos = $('#masonry_container .masonry_box').has('.duration');
 
     return videos.map((i, video) => {
-      video = $(video);
-
-      const title = video.find('.title a');
+      const cached = $(video);
+      const title = cached.find('.title a');
 
       return {
         title: title.text(),
         url: `http://www.sex.com${title.attr('href')}`,
-        duration: video.find('.duration').text(),
-        thumb: video.find('.image').data('src'),
+        duration: cached.find('.duration').text(),
+        thumb: cached.find('.image').data('src'),
       };
     }).get();
   }
@@ -40,9 +39,7 @@ class Sex extends AbstractModule.with(Gif, Video) {
     const gifs = $('#masonry_container .masonry_box').not('.ad_box');
 
     return gifs.map((i, gif) => {
-      gif = $(gif);
-
-      const data = gif.find('.image');
+      const data = $(gif).find('.image');
 
       return {
         title: data.attr('alt'),
