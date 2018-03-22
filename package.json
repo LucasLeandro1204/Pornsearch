@@ -8,7 +8,8 @@
   ],
   "scripts": {
     "build": "rm -r /dist -f && babel src --out-dir dist --copy-files",
-    "lint": "semistandard --fix | snazzy",
+    "lint": "eslint --ext .js src/*",
+    "lint:fix": "eslint --fix --ext .js src/*",
     "test": "node ./example/example"
   },
   "keywords": [
@@ -45,6 +46,11 @@
     "babel-plugin-module-resolver": "^3.1.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
     "path": "^0.12.7",
     "semistandard": "^11.0.0",
     "snazzy": "^7.0.0"
