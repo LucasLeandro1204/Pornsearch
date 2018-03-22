@@ -11,7 +11,7 @@ class Pornsearch {
     this.module = {};
     this.modules = Modules;
 
-    this.driver(query, driver);
+    this.driver(driver, query);
   }
 
   support () {
@@ -47,14 +47,14 @@ class Pornsearch {
     });
   }
 
-  driver (query, driver = 'pornhub') {
+  driver (driver = 'pornhub', query) {
     const PornModule = this.modules[driver.toLowerCase()];
 
     if (!PornModule) {
       throw new Error(`We don't support ${driver} by now =/`);
     }
 
-    this.module = new PornModule(query);
+    this.module = new PornModule(query || this.query);
 
     return this;
   }
