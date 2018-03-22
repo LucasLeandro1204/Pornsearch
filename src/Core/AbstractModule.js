@@ -1,14 +1,16 @@
+import OverwriteError from 'Core/OverwriteError';
+
 class AbstractModule {
   constructor (query = '') {
     this.query = query;
   }
 
   get name () {
-    throw new Error('This function must be overwrite');
+    throw new OverwriteError;
   }
 
   get firstpage () {
-    throw new Error('This function must be overwrite');
+    throw new OverwriteError;
   }
 
   static with (...mixins) {

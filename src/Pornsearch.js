@@ -41,10 +41,8 @@ class Pornsearch {
           resolve(this.module[type + PARSER](Cheerio.load(body), body));
         })
         .catch((error) => {
-          console.log(error);
-          reject(
-            new Error(`No results for search related to ${this.module.query} in page ${page}`)
-          );
+          console.warn(error);
+          reject(new Error(`No results for search related to ${this.module.query} in page ${page}`));
         });
     });
   }

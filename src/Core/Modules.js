@@ -7,5 +7,5 @@ export default {
   sex,
   pornhub,
   redtube,
-  xvideos
+  xvideos,
 };

@@ -1,9 +1,11 @@
-export default (Father) => class extends Father {
+import OverwriteError from 'Core/OverwriteError';
+
+export default Father => class extends Father {
   gifUrl () {
-    throw new Error('This function must be overwrite');
+    throw new OverwriteError;
   }
 
   gifParser () {
-    throw new Error('This function must be overwrite');
+    throw new OverwriteError;
   }
 };
