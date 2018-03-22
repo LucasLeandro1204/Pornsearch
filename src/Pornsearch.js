@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import Cheerio from 'cheerio';
-import Modules from 'Core/Modules';
+import Modules from 'core/Modules';
 
 const GIF = 'gif';
 const PARSER = 'Parser';
@@ -11,7 +11,7 @@ class Pornsearch {
     this.module = {};
     this.modules = Modules;
 
-    this.driver(query, driver);
+    this.driver(driver, query);
   }
 
   support () {
@@ -38,7 +38,13 @@ class Pornsearch {
     return new Promise((resolve, reject) => {
       Axios.get(url)
         .then(({ data: body }) => {
-          resolve(this.module[type + PARSER](Cheerio.load(body), body));
+          const data = this.module[type + PARSER](Cheerio.load(body), body);
+
+          if (!data.length) {
+            throw new Error('No results');
+          }
+
+          resolve(data);
         })
         .catch((error) => {
           console.warn(error);
@@ -47,14 +53,14 @@ class Pornsearch {
     });
   }
 
-  driver (query, driver = 'pornhub') {
+  driver (driver = 'pornhub', query) {
     const PornModule = this.modules[driver.toLowerCase()];
 
     if (!PornModule) {
       throw new Error(`We don't support ${driver} by now =/`);
     }
 
-    this.module = new PornModule(query);
+    this.module = new PornModule(query || this.query);
 
     return this;
   }

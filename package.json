@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "build": "rm -r /dist -f && babel src --out-dir dist --copy-files",
+    "watch": "npm run build -- --watch",
     "lint": "eslint --ext .js src/*",
     "lint:fix": "eslint --fix --ext .js src/*",
     "test": "node ./example/example"

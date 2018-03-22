@@ -1,6 +1,6 @@
-import Gif from 'Core/GifMixin';
-import Video from 'Core/VideoMixin';
-import AbstractModule from 'Core/AbstractModule';
+import Gif from 'core/GifMixin';
+import Video from 'core/VideoMixin';
+import AbstractModule from 'core/AbstractModule';
 
 class Sex extends AbstractModule.with(Gif, Video) {
   get name () {
@@ -20,16 +20,22 @@ class Sex extends AbstractModule.with(Gif, Video) {
   }
 
   videoParser ($) {
-    const videos = $('#masonry_container .masonry_box').has('.duration');
+    const videos = $('#masonry_container .masonry_box');
 
     return videos.map((i, video) => {
       const cached = $(video);
-      const title = cached.find('.title a');
+      const link = cached.find('.title a');
+      const title = link.text();
+      const duration = cached.find('.duration').text();
+
+      if (!title || !duration) {
+        return;
+      }
 
       return {
-        title: title.text(),
-        url: `http://www.sex.com${title.attr('href')}`,
-        duration: cached.find('.duration').text(),
+        title,
+        url: `http://www.sex.com${link.attr('href')}`,
+        duration,
         thumb: cached.find('.image').data('src'),
       };
     }).get();
@@ -39,11 +45,17 @@ class Sex extends AbstractModule.with(Gif, Video) {
     const gifs = $('#masonry_container .masonry_box').not('.ad_box');
 
     return gifs.map((i, gif) => {
-      const data = $(gif).find('.image');
+      const data = $(gif).find('a.image_wrapper');
+      const title = data.attr('title');
+      const url = data.find('img').data('src');
+
+      if (!title || !url) {
+        return;
+      }
 
       return {
-        title: data.attr('alt'),
-        url: data.data('src'),
+        title,
+        url,
       };
     }).get();
   }
