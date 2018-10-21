@@ -29,11 +29,13 @@ class Pornhub extends AbstractModule.with(Gif, Video) {
         return;
       }
 
+      const thumb = data.find('img').attr('data-mediumthumb') || '';
+
       return {
         title: data.find('a').text().trim(),
         url: `http://pornhub.com${data.find('a').eq(0).attr('href')}`,
         duration: data.find('.duration').text(),
-        thumb: data.find('img').attr('data-mediumthumb').replace(/\([^)]*\)/g, ''),
+        thumb: thumb.replace(/\([^)]*\)/g, ''),
       };
     }).get();
   }
