@@ -27,7 +27,7 @@ class Pornsearch {
   }
 
   gifs (page) {
-    return this._get(this.module.gifUrl(page), GIF);
+    return this._get(this.module.gifUrl(page), GIF, page || this.module.firstpage);
   }
 
   videos (page) {
@@ -48,6 +48,7 @@ class Pornsearch {
         })
         .catch((error) => {
           console.warn(error);
+
           reject(new Error(`No results for search related to ${this.module.query} in page ${page}`));
         });
     });
