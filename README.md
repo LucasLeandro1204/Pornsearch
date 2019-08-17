@@ -47,7 +47,7 @@ Pornsearch.gifs()
 | [sex](http://sex.com/)          |   X    |  X   |
 | [redtube](https://redtube.com/) |   X    |      |
 | [xvideos](http://xvideos.com/)  |   X    |      |
-| [yourporn](http://youporn.com/)  |   X    |      |
+| [youporn](http://youporn.com/)  |   X    |      |
 | [motherless](http://motherless.com/)  |   X    |      |
 
 
