@@ -48,7 +48,7 @@ Pornsearch.gifs()
 | [redtube](https://redtube.com/) |   X    |      |
 | [xvideos](http://xvideos.com/)  |   X    |      |
 | [youporn](http://youporn.com/)  |   X    |      |
-| [motherless](http://motherless.com/)  |   X    |      |
+| [motherless](http://motherless.com/)  |   X    |  X   |
 
 
 #### Videos structure
@@ -70,6 +70,7 @@ What will return in gif search
 |:-------------------------------|:-----:|:---:|:----:|
 | [pornhub](http://pornhub.com/) |   X   |  X  |  X   |
 | [sex](http://sex.com/)         |   X   |  X  |      |
+| [motherless](http://motherless.com/) |   X   |  X  |      |
 
 
 ## Installation
