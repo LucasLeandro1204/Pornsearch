@@ -208,7 +208,9 @@ const searcher = new Pornsearch('test', 'redtube');
 searcher.gifs(); // Error: GIF search is not supported for Redtube. Supported modules with GIF search: sex, pornhub
 ```
 
-**Network/Parsing Errors**: Failed searches provide context about what went wrong:
+**Network/Parsing Errors**: The library distinguishes between network errors and parsing errors:
+- **Parsing errors** (e.g., "Parser not found", "No results found") are preserved and thrown as-is to provide specific diagnostic information
+- **Network errors** (connection failures, timeouts, HTTP errors) are wrapped with contextual information:
 ```js
 // Error: Failed to search for "query" on Pornhub (page 1). This could be due to network issues, site changes, or no results being available.
 ```

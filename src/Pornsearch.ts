@@ -91,7 +91,7 @@ class Pornsearch {
    */
   gifs(page?: number): Promise<Gif[]> {
     // Check module support first before validating query
-    if (!this.module.gifUrl) {
+    if (typeof this.module.gifUrl !== 'function') {
       throw new Error(
         `GIF search is not supported for ${this.module.name}. ` +
           `Supported modules with GIF search: ${this._getModulesWithGifSupport().join(', ')}`
@@ -110,7 +110,7 @@ class Pornsearch {
    */
   videos(page?: number): Promise<Video[]> {
     // Check module support first before validating query
-    if (!this.module.videoUrl) {
+    if (typeof this.module.videoUrl !== 'function') {
       throw new Error(
         `Video search is not supported for ${this.module.name}. ` +
           `Supported modules with video search: ${this._getModulesWithVideoSupport().join(', ')}`
@@ -191,17 +191,21 @@ class Pornsearch {
       }
 
       return data;
-    } catch (error) {
-      // If error is already one of our specific errors (from parsing), preserve it
-      if (
-        error instanceof Error &&
-        (error.message.includes('Parser not found') || error.message.includes('No results found'))
-      ) {
-        throw error;
+    } catch (error: unknown) {
+      // Distinguish between network (Axios) errors and parsing/runtime errors
+      if (!axios.isAxiosError(error)) {
+        // Non-network error: preserve original error details where possible
+        if (error instanceof Error) {
+          throw error;
+        }
+
+        // Fallback for non-Error throw values
+        throw new Error(
+          `Unexpected error while processing results for "${this.module.query}" on ${this.module.name} (page ${page}).`
+        );
       }
 
-      // For network/axios errors, wrap with helpful context
-      console.warn(error);
+      // Network error: wrap with helpful context
       throw new Error(
         `Failed to search for "${this.module.query}" on ${this.module.name} (page ${page}). ` +
           `This could be due to network issues, site changes, or no results being available.`

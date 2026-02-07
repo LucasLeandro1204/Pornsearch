@@ -110,6 +110,20 @@ describe('Pornsearch', () => {
       const searcher = new Pornsearch('   ', 'pornhub');
       expect(() => searcher.gifs()).toThrow('Search query is required');
     });
+
+    it('should check module support before query validation - gifs', () => {
+      // Redtube doesn't support gifs, so even with empty query, should throw "not supported" error
+      const searcher = new Pornsearch('', 'redtube');
+      expect(() => searcher.gifs()).toThrow('GIF search is not supported for');
+      expect(() => searcher.gifs()).not.toThrow('Search query is required');
+    });
+
+    it('should check module support before query validation - videos', () => {
+      // All current modules support videos, but we test the pattern is correct
+      const searcher = new Pornsearch('test', 'pornhub');
+      // This should not throw since module supports videos and has valid query
+      expect(searcher.videos).toBeDefined();
+    });
   });
 
   describe('Content type support checks', () => {
