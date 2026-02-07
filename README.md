@@ -117,7 +117,30 @@ But you always can change the current driver:
 Pornsearch.driver(driver);
 ```
 
-**An error will be thrown if Pornsearch don't support the driver you passed in**
+**An error will be thrown if Pornsearch doesn't support the driver you passed in**
+
+### Fluent API
+
+You can also use a fluent API to chain methods:
+
+```js
+const searcher = new Pornsearch()
+  .setQuery('amateur')
+  .driver('sex');
+
+searcher.videos().then(videos => console.log(videos));
+```
+
+### Checking Module Capabilities
+
+Check if the current module supports specific content types:
+
+```js
+const searcher = new Pornsearch('test', 'redtube');
+
+console.log(searcher.supportsVideos()); // true
+console.log(searcher.supportsGifs());   // false
+```
 
 To know the current driver
 ```js
@@ -132,7 +155,7 @@ It's easy to search for porn content with Pornsearch =)
 
 ```js
 Pornsearch.videos()
-  .then(videos => console.log(videos)
+  .then(videos => console.log(videos))
   .then(() => Pornsearch.gifs())
   .then(gifs => console.log(gifs));
 ```
@@ -142,9 +165,9 @@ Specify the page to search on
 Pornsearch.gifs(3);
 ```
 
-Change de query
+Change the query
 ```js
-Pornsearch.search('pussy')
+Pornsearch.setQuery('pussy')
   .gifs()
   .then(gifs => console.log(gifs));
 ```
@@ -167,7 +190,4 @@ To know what the current driver will return in gif search check the [gifs struct
 
 __PORNHUB gifs in general are extremely heavy, so be a nice person and share webm__ (sex.com gifs are nice)
 
-If has error in whenever search, will be throw an error:
-```Markdown
-No results for search related to *query* in page *page*
-```
+If there's an error in any search, a descriptive error will be thrown with helpful information about what went wrong.
