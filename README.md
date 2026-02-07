@@ -191,3 +191,26 @@ To know what the current driver will return in gif search check the [gifs struct
 __PORNHUB gifs in general are extremely heavy, so be a nice person and share webm__ (sex.com gifs are nice)
 
 If there's an error in any search, a descriptive error will be thrown with helpful information about what went wrong.
+
+## Error Handling
+
+The library provides clear, actionable error messages:
+
+**Query Validation**: Empty or whitespace-only queries will throw an error immediately:
+```js
+const searcher = new Pornsearch('', 'pornhub');
+searcher.videos(); // Error: Search query is required. Please set a query before searching.
+```
+
+**Module Support**: Attempting to use unsupported features provides helpful guidance:
+```js
+const searcher = new Pornsearch('test', 'redtube');
+searcher.gifs(); // Error: GIF search is not supported for Redtube. Supported modules with GIF search: sex, pornhub
+```
+
+**Network/Parsing Errors**: Failed searches provide context about what went wrong:
+```js
+// Error: Failed to search for "query" on Pornhub (page 1). This could be due to network issues, site changes, or no results being available.
+```
+
+Note: As of recent updates, the library validates queries before making network requests, providing faster feedback for invalid inputs.
