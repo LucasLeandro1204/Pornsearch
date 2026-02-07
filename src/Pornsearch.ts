@@ -90,13 +90,14 @@ class Pornsearch {
    * @throws Error if no search query is set
    */
   gifs(page?: number): Promise<Gif[]> {
-    this._validateQuery();
+    // Check module support first before validating query
     if (!this.module.gifUrl) {
       throw new Error(
         `GIF search is not supported for ${this.module.name}. ` +
           `Supported modules with GIF search: ${this._getModulesWithGifSupport().join(', ')}`
       );
     }
+    this._validateQuery();
     return this._get(this.module.gifUrl(page), GIF, page || this.module.firstpage);
   }
 
@@ -108,13 +109,14 @@ class Pornsearch {
    * @throws Error if no search query is set
    */
   videos(page?: number): Promise<Video[]> {
-    this._validateQuery();
+    // Check module support first before validating query
     if (!this.module.videoUrl) {
       throw new Error(
         `Video search is not supported for ${this.module.name}. ` +
           `Supported modules with video search: ${this._getModulesWithVideoSupport().join(', ')}`
       );
     }
+    this._validateQuery();
     return this._get(this.module.videoUrl(page), VIDEO, page || this.module.firstpage);
   }
 
@@ -165,39 +167,46 @@ class Pornsearch {
    * Internal method to fetch and parse content
    * @private
    */
-  private _get<T extends Video | Gif>(url: string, type: ContentType, page: number): Promise<T[]> {
-    return new Promise((resolve, reject) => {
-      axios
-        .get(url)
-        .then(({ data: body }) => {
-          const $ = cheerio.load(body);
-          const parserMethod = `${type}${PARSER}` as 'videoParser' | 'gifParser';
-          const parser = this.module[parserMethod];
+  private async _get<T extends Video | Gif>(
+    url: string,
+    type: ContentType,
+    page: number
+  ): Promise<T[]> {
+    try {
+      const { data: body } = await axios.get(url);
+      const $ = cheerio.load(body);
+      const parserMethod = `${type}${PARSER}` as 'videoParser' | 'gifParser';
+      const parser = this.module[parserMethod];
 
-          if (!parser) {
-            throw new Error(`Parser not found for ${type} in ${this.module.name}`);
-          }
+      if (!parser) {
+        throw new Error(`Parser not found for ${type} in ${this.module.name}`);
+      }
 
-          const data = parser($, body) as T[];
+      const data = parser($, body) as T[];
 
-          if (!data.length) {
-            throw new Error(
-              `No results found for "${this.module.query}" on ${this.module.name} (page ${page})`
-            );
-          }
+      if (!data.length) {
+        throw new Error(
+          `No results found for "${this.module.query}" on ${this.module.name} (page ${page})`
+        );
+      }
 
-          resolve(data);
-        })
-        .catch((error) => {
-          console.warn(error);
-          reject(
-            new Error(
-              `Failed to search for "${this.module.query}" on ${this.module.name} (page ${page}). ` +
-                `This could be due to network issues, site changes, or no results being available.`
-            )
-          );
-        });
-    });
+      return data;
+    } catch (error) {
+      // If error is already one of our specific errors (from parsing), preserve it
+      if (error instanceof Error && error.message.includes('Parser not found')) {
+        throw error;
+      }
+      if (error instanceof Error && error.message.includes('No results found')) {
+        throw error;
+      }
+
+      // For network/axios errors, wrap with helpful context
+      console.warn(error);
+      throw new Error(
+        `Failed to search for "${this.module.query}" on ${this.module.name} (page ${page}). ` +
+          `This could be due to network issues, site changes, or no results being available.`
+      );
+    }
   }
 
   /**
