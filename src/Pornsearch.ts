@@ -28,6 +28,8 @@ const VIDEO: ContentType = 'video';
 class Pornsearch {
   private module: ModuleInterface;
   private modules: typeof modules;
+  private static _modulesWithVideoSupport: string[] | null = null;
+  private static _modulesWithGifSupport: string[] | null = null;
 
   /**
    * Creates a new Pornsearch instance
@@ -128,29 +130,35 @@ class Pornsearch {
   }
 
   /**
-   * Get list of modules that support GIF search
+   * Get list of modules that support GIF search (cached for performance)
    * @private
    * @returns Array of module names supporting GIF search
    */
   private _getModulesWithGifSupport(): string[] {
-    return Object.keys(this.modules).filter((moduleName) => {
-      const Module = this.modules[moduleName];
-      const instance = new Module('');
-      return typeof instance.gifUrl === 'function';
-    });
+    if (Pornsearch._modulesWithGifSupport === null) {
+      Pornsearch._modulesWithGifSupport = Object.keys(this.modules).filter((moduleName) => {
+        const Module = this.modules[moduleName];
+        const instance = new Module('');
+        return typeof instance.gifUrl === 'function';
+      });
+    }
+    return Pornsearch._modulesWithGifSupport;
   }
 
   /**
-   * Get list of modules that support video search
+   * Get list of modules that support video search (cached for performance)
    * @private
    * @returns Array of module names supporting video search
    */
   private _getModulesWithVideoSupport(): string[] {
-    return Object.keys(this.modules).filter((moduleName) => {
-      const Module = this.modules[moduleName];
-      const instance = new Module('');
-      return typeof instance.videoUrl === 'function';
-    });
+    if (Pornsearch._modulesWithVideoSupport === null) {
+      Pornsearch._modulesWithVideoSupport = Object.keys(this.modules).filter((moduleName) => {
+        const Module = this.modules[moduleName];
+        const instance = new Module('');
+        return typeof instance.videoUrl === 'function';
+      });
+    }
+    return Pornsearch._modulesWithVideoSupport;
   }
 
   /**
@@ -219,6 +227,7 @@ class Pornsearch {
    * Update the search query for the current module
    * @param query - New search query string
    * @returns This instance for method chaining
+   * @throws Error if query is empty or only whitespace
    * @example
    * ```typescript
    * const searcher = new Pornsearch();
@@ -226,6 +235,9 @@ class Pornsearch {
    * ```
    */
   setQuery(query: string): this {
+    if (!query || query.trim() === '') {
+      throw new Error('Search query cannot be empty or whitespace-only.');
+    }
     this.module.query = query;
     return this;
   }

@@ -2,7 +2,7 @@ import Pornsearch from '../src/Pornsearch';
 
 /**
  * TypeScript example for Pornsearch library
- * This example demonstrates the type-safe API usage
+ * This example demonstrates the type-safe API usage with improved error handling
  */
 async function main() {
   try {
@@ -14,6 +14,12 @@ async function main() {
     console.log('Current driver:', searcher.current());
     console.log('Search query:', searcher.query);
     console.log('Supported modules:', searcher.support().join(', '));
+    console.log('\n---\n');
+
+    // Check what the current module supports
+    console.log('Feature support check:');
+    console.log('  - Supports videos:', searcher.supportsVideos());
+    console.log('  - Supports GIFs:', searcher.supportsGifs());
     console.log('\n---\n');
 
     // Search for videos on Sex.com
@@ -54,6 +60,16 @@ async function main() {
       console.log(`${index + 1}. ${video.title}`);
       console.log(`   Duration: ${video.duration}`);
     });
+    console.log('\n---\n');
+
+    // Demonstrate fluent API with setQuery()
+    console.log('Using fluent API to change query...');
+    const fluentSearcher = new Pornsearch()
+      .setQuery('lesbian')
+      .driver('redtube');
+    console.log('New query:', fluentSearcher.query);
+    console.log('Module:', fluentSearcher.current());
+    console.log('Supports GIFs:', fluentSearcher.supportsGifs());
 
     console.log('\n=== Example completed successfully! ===');
   } catch (error) {

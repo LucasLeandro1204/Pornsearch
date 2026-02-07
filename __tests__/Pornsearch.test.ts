@@ -88,6 +88,16 @@ describe('Pornsearch', () => {
       const result = searcher.setQuery('newquery');
       expect(result).toBe(searcher);
     });
+
+    it('should throw error when setting empty query', () => {
+      const searcher = new Pornsearch('test');
+      expect(() => searcher.setQuery('')).toThrow('Search query cannot be empty');
+    });
+
+    it('should throw error when setting whitespace-only query', () => {
+      const searcher = new Pornsearch('test');
+      expect(() => searcher.setQuery('   ')).toThrow('Search query cannot be empty');
+    });
   });
 
   describe('Query validation', () => {
