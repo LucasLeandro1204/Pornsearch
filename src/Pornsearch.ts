@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
-import modules from 'core/Modules';
+import modules from './core/Modules';
 import { ModuleInterface, Video, Gif, ContentType } from './types';
 
 const GIF: ContentType = 'gif';
@@ -43,11 +43,7 @@ class Pornsearch {
     return this._get(this.module.videoUrl(page), VIDEO, page || this.module.firstpage);
   }
 
-  private _get<T extends Video | Gif>(
-    url: string,
-    type: ContentType,
-    page: number
-  ): Promise<T[]> {
+  private _get<T extends Video | Gif>(url: string, type: ContentType, page: number): Promise<T[]> {
     return new Promise((resolve, reject) => {
       axios
         .get(url)
@@ -55,11 +51,11 @@ class Pornsearch {
           const $ = cheerio.load(body);
           const parserMethod = `${type}${PARSER}` as 'videoParser' | 'gifParser';
           const parser = this.module[parserMethod];
-          
+
           if (!parser) {
             throw new Error(`Parser not found for ${type}`);
           }
-          
+
           const data = parser($, body) as T[];
 
           if (!data.length) {

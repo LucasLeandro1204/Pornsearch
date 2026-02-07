@@ -1,6 +1,6 @@
 import * as cheerio from 'cheerio';
-import VideoMixin from 'core/VideoMixin';
-import AbstractModule from 'core/AbstractModule';
+import VideoMixin from '../core/VideoMixin';
+import AbstractModule from '../core/AbstractModule';
 import { Video } from '../types';
 
 interface RedtubeVideo {

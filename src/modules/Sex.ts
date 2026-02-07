@@ -1,7 +1,7 @@
 import * as cheerio from 'cheerio';
-import GifMixin from 'core/GifMixin';
-import VideoMixin from 'core/VideoMixin';
-import AbstractModule from 'core/AbstractModule';
+import GifMixin from '../core/GifMixin';
+import VideoMixin from '../core/VideoMixin';
+import AbstractModule from '../core/AbstractModule';
 import { Video, Gif } from '../types';
 
 class Sex extends AbstractModule.with(GifMixin, VideoMixin) {

@@ -1,8 +1,10 @@
 # Pornsearch
 
-[![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
+[![js-semistandard-style](https://img.shields.io/badge/code%20style-prettier-brightgreen.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 Easy way to search for porn content
+
+**Note: This library is now written in TypeScript and provides full type definitions!**
 
 #### If you have any suggestions of a website, open an issue!
 
@@ -10,6 +12,7 @@ Easy way to search for porn content
 
 You can do it in two ways:
 
+**JavaScript (CommonJS):**
 ```js
 const Pornsearch = require('pornsearch');
 const Searcher = new Pornsearch('tits');
@@ -18,8 +21,8 @@ Searcher.videos()
   .then(videos => console.log(videos));
 ```
 
-```js
-// using import
+**TypeScript / ES Modules:**
+```typescript
 import Pornsearch from 'pornsearch';
 
 const Searcher = new Pornsearch('tits');
@@ -35,6 +38,7 @@ const Pornsearch = require('pornsearch').search('ass');
 
 Pornsearch.gifs()
   .then(gifs => console.log(gifs));
+```
 ```
 
 ## Support

@@ -1,9 +1,9 @@
-import Sex from 'modules/Sex';
-import Pornhub from 'modules/Pornhub';
-import Redtube from 'modules/Redtube';
-import Xvideos from 'modules/Xvideos';
-import Youporn from 'modules/Youporn';
-import Motherless from 'modules/Motherless';
+import Sex from '../modules/Sex';
+import Pornhub from '../modules/Pornhub';
+import Redtube from '../modules/Redtube';
+import Xvideos from '../modules/Xvideos';
+import Youporn from '../modules/Youporn';
+import Motherless from '../modules/Motherless';
 import { ModuleConstructor } from '../types';
 
 interface ModulesRegistry {
