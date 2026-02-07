@@ -51,14 +51,20 @@ class Pornhub extends AbstractModule.with(GifMixin, VideoMixin) {
     return gifs
       .map((_i: any, gif: any) => {
         const data = $(gif).find('a');
+        const href = data.attr('href');
+
+        if (!href) {
+          return undefined;
+        }
 
         return {
           title: data.find('span').text(),
-          url: 'http://dl.phncdn.com#id#.gif'.replace('#id#', data.attr('href') || ''),
+          url: 'http://dl.phncdn.com#id#.gif'.replace('#id#', href),
           webm: data.find('video').attr('data-webm'),
         };
       })
-      .get();
+      .get()
+      .filter((item: any): item is Gif => item !== undefined);
   }
 }
 

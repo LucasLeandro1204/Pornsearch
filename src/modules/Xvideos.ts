@@ -23,7 +23,7 @@ class Xvideos extends AbstractModule.with(VideoMixin) {
       .map((_i: any, video: any) => {
         const cache = $(video);
         const title = cache.find('p a').eq(0);
-        const thumbSrc = cache.find('.thumb img').data('src') as string;
+        const thumbSrc = (cache.find('.thumb img').data('src') as string) || '';
 
         return {
           title: title.text(),
