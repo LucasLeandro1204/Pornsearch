@@ -193,10 +193,10 @@ class Pornsearch {
       return data;
     } catch (error) {
       // If error is already one of our specific errors (from parsing), preserve it
-      if (error instanceof Error && error.message.includes('Parser not found')) {
-        throw error;
-      }
-      if (error instanceof Error && error.message.includes('No results found')) {
+      if (
+        error instanceof Error &&
+        (error.message.includes('Parser not found') || error.message.includes('No results found'))
+      ) {
         throw error;
       }
 
