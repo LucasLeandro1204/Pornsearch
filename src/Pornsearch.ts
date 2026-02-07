@@ -65,14 +65,35 @@ class Pornsearch {
   }
 
   /**
+   * Check if the current module supports video search
+   * @returns True if video search is supported
+   */
+  supportsVideos(): boolean {
+    return typeof this.module.videoUrl === 'function';
+  }
+
+  /**
+   * Check if the current module supports GIF search
+   * @returns True if GIF search is supported
+   */
+  supportsGifs(): boolean {
+    return typeof this.module.gifUrl === 'function';
+  }
+
+  /**
    * Search for GIFs
    * @param page - Optional page number (default: first page of current module)
    * @returns Promise resolving to array of GIFs
    * @throws Error if the current module doesn't support GIF search
+   * @throws Error if no search query is set
    */
   gifs(page?: number): Promise<Gif[]> {
+    this._validateQuery();
     if (!this.module.gifUrl) {
-      throw new Error(`Gif search is not supported for ${this.module.name}`);
+      throw new Error(
+        `GIF search is not supported for ${this.module.name}. ` +
+          `Supported modules with GIF search: ${this._getModulesWithGifSupport().join(', ')}`
+      );
     }
     return this._get(this.module.gifUrl(page), GIF, page || this.module.firstpage);
   }
@@ -82,12 +103,54 @@ class Pornsearch {
    * @param page - Optional page number (default: first page of current module)
    * @returns Promise resolving to array of videos
    * @throws Error if the current module doesn't support video search
+   * @throws Error if no search query is set
    */
   videos(page?: number): Promise<Video[]> {
+    this._validateQuery();
     if (!this.module.videoUrl) {
-      throw new Error(`Video search is not supported for ${this.module.name}`);
+      throw new Error(
+        `Video search is not supported for ${this.module.name}. ` +
+          `Supported modules with video search: ${this._getModulesWithVideoSupport().join(', ')}`
+      );
     }
     return this._get(this.module.videoUrl(page), VIDEO, page || this.module.firstpage);
+  }
+
+  /**
+   * Validates that a search query is set
+   * @private
+   * @throws Error if query is empty or only whitespace
+   */
+  private _validateQuery(): void {
+    if (!this.query || this.query.trim() === '') {
+      throw new Error('Search query is required. Please set a query before searching.');
+    }
+  }
+
+  /**
+   * Get list of modules that support GIF search
+   * @private
+   * @returns Array of module names supporting GIF search
+   */
+  private _getModulesWithGifSupport(): string[] {
+    return Object.keys(this.modules).filter((moduleName) => {
+      const Module = this.modules[moduleName];
+      const instance = new Module('');
+      return typeof instance.gifUrl === 'function';
+    });
+  }
+
+  /**
+   * Get list of modules that support video search
+   * @private
+   * @returns Array of module names supporting video search
+   */
+  private _getModulesWithVideoSupport(): string[] {
+    return Object.keys(this.modules).filter((moduleName) => {
+      const Module = this.modules[moduleName];
+      const instance = new Module('');
+      return typeof instance.videoUrl === 'function';
+    });
   }
 
   /**
@@ -104,13 +167,15 @@ class Pornsearch {
           const parser = this.module[parserMethod];
 
           if (!parser) {
-            throw new Error(`Parser not found for ${type}`);
+            throw new Error(`Parser not found for ${type} in ${this.module.name}`);
           }
 
           const data = parser($, body) as T[];
 
           if (!data.length) {
-            throw new Error('No results');
+            throw new Error(
+              `No results found for "${this.module.query}" on ${this.module.name} (page ${page})`
+            );
           }
 
           resolve(data);
@@ -118,7 +183,10 @@ class Pornsearch {
         .catch((error) => {
           console.warn(error);
           reject(
-            new Error(`No results for search related to ${this.module.query} in page ${page}`)
+            new Error(
+              `Failed to search for "${this.module.query}" on ${this.module.name} (page ${page}). ` +
+                `This could be due to network issues, site changes, or no results being available.`
+            )
           );
         });
     });
@@ -132,14 +200,33 @@ class Pornsearch {
    * @throws Error if the specified module is not supported
    */
   driver(driver: string = 'pornhub', query?: string): this {
-    const PornModule = this.modules[driver.toLowerCase()];
+    const normalizedDriver = driver.toLowerCase();
+    const PornModule = this.modules[normalizedDriver];
 
     if (!PornModule) {
-      throw new Error(`We don't support ${driver} by now =/`);
+      const supportedModules = this.support().join(', ');
+      throw new Error(
+        `Module "${driver}" is not supported. Supported modules are: ${supportedModules}`
+      );
     }
 
     this.module = new PornModule(query || this.query);
 
+    return this;
+  }
+
+  /**
+   * Update the search query for the current module
+   * @param query - New search query string
+   * @returns This instance for method chaining
+   * @example
+   * ```typescript
+   * const searcher = new Pornsearch();
+   * searcher.setQuery('amateur').videos();
+   * ```
+   */
+  setQuery(query: string): this {
+    this.module.query = query;
     return this;
   }
 

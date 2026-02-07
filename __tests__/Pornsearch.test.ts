@@ -15,7 +15,7 @@ describe('Pornsearch', () => {
     });
 
     it('should throw error for unsupported driver', () => {
-      expect(() => new Pornsearch('test', 'invalid')).toThrow("We don't support invalid by now =/");
+      expect(() => new Pornsearch('test', 'invalid')).toThrow('Module "invalid" is not supported');
     });
   });
 
@@ -75,6 +75,50 @@ describe('Pornsearch', () => {
     });
   });
 
+  describe('setQuery()', () => {
+    it('should update the search query', () => {
+      const searcher = new Pornsearch('initial', 'pornhub');
+      expect(searcher.query).toBe('initial');
+      searcher.setQuery('updated');
+      expect(searcher.query).toBe('updated');
+    });
+
+    it('should return this for method chaining', () => {
+      const searcher = new Pornsearch('test');
+      const result = searcher.setQuery('newquery');
+      expect(result).toBe(searcher);
+    });
+  });
+
+  describe('Query validation', () => {
+    it('should throw error when searching with empty query', () => {
+      const searcher = new Pornsearch('', 'pornhub');
+      expect(() => searcher.videos()).toThrow('Search query is required');
+    });
+
+    it('should throw error when searching with whitespace-only query', () => {
+      const searcher = new Pornsearch('   ', 'pornhub');
+      expect(() => searcher.gifs()).toThrow('Search query is required');
+    });
+  });
+
+  describe('Content type support checks', () => {
+    it('supportsVideos() should return true for modules with video support', () => {
+      const searcher = new Pornsearch('test', 'pornhub');
+      expect(searcher.supportsVideos()).toBe(true);
+    });
+
+    it('supportsGifs() should return true for modules with GIF support', () => {
+      const searcher = new Pornsearch('test', 'pornhub');
+      expect(searcher.supportsGifs()).toBe(true);
+    });
+
+    it('supportsGifs() should return false for modules without GIF support', () => {
+      const searcher = new Pornsearch('test', 'redtube');
+      expect(searcher.supportsGifs()).toBe(false);
+    });
+  });
+
   describe('Video support', () => {
     it('should not throw for modules that support videos', () => {
       const modules = ['pornhub', 'sex', 'redtube', 'xvideos', 'youporn', 'motherless'];
@@ -91,7 +135,7 @@ describe('Pornsearch', () => {
       const noGifModules = ['redtube', 'xvideos', 'youporn', 'motherless'];
       noGifModules.forEach((module) => {
         const searcher = new Pornsearch('test', module);
-        expect(() => searcher.gifs()).toThrow(`Gif search is not supported for`);
+        expect(() => searcher.gifs()).toThrow('GIF search is not supported for');
       });
     });
 
