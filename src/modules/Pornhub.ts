@@ -25,8 +25,8 @@ class Pornhub extends AbstractModule.with(GifMixin, VideoMixin) {
     const videos = $('ul.videos.search-video-thumbs li');
 
     return videos
-      .map((_i: any) => {
-        const data = videos.eq(_i);
+      .map((index: number, element: cheerio.Element) => {
+        const data = $(element);
 
         if (!data.length) {
           return undefined;
@@ -42,15 +42,15 @@ class Pornhub extends AbstractModule.with(GifMixin, VideoMixin) {
         };
       })
       .get()
-      .filter((item: any): item is Video => item !== undefined);
+      .filter((item: Video | undefined): item is Video => item !== undefined);
   }
 
   gifParser($: cheerio.Root): Gif[] {
     const gifs = $('ul.gifs.gifLink li');
 
     return gifs
-      .map((_i: any, gif: any) => {
-        const data = $(gif).find('a');
+      .map((index: number, element: cheerio.Element) => {
+        const data = $(element).find('a');
         const href = data.attr('href');
 
         if (!href) {
@@ -64,7 +64,7 @@ class Pornhub extends AbstractModule.with(GifMixin, VideoMixin) {
         };
       })
       .get()
-      .filter((item: any): item is Gif => item !== undefined);
+      .filter((item: Gif | undefined): item is Gif => item !== undefined);
   }
 }
 

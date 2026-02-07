@@ -25,8 +25,8 @@ class Sex extends AbstractModule.with(GifMixin, VideoMixin) {
     const videos = $('#masonry_container .masonry_box');
 
     return videos
-      .map((_i: any, video: any) => {
-        const cached = $(video);
+      .map((index: number, element: cheerio.Element) => {
+        const cached = $(element);
         const link = cached.find('.title a');
         const title = link.text();
         const duration = cached.find('.duration').text();
@@ -43,15 +43,15 @@ class Sex extends AbstractModule.with(GifMixin, VideoMixin) {
         };
       })
       .get()
-      .filter((item: any): item is Video => item !== undefined);
+      .filter((item: Video | undefined): item is Video => item !== undefined);
   }
 
   gifParser($: cheerio.Root): Gif[] {
     const gifs = $('#masonry_container .masonry_box').not('.ad_box');
 
     return gifs
-      .map((_i: any, gif: any) => {
-        const data = $(gif).find('a.image_wrapper');
+      .map((index: number, element: cheerio.Element) => {
+        const data = $(element).find('a.image_wrapper');
         const title = data.attr('title');
         const url = data.find('img').data('src') as string;
 
@@ -65,7 +65,7 @@ class Sex extends AbstractModule.with(GifMixin, VideoMixin) {
         };
       })
       .get()
-      .filter((item: any): item is Gif => item !== undefined);
+      .filter((item: Gif | undefined): item is Gif => item !== undefined);
   }
 }
 
