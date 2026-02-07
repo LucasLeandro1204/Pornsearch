@@ -119,9 +119,9 @@ describe('Pornsearch', () => {
     });
 
     it('should check module support before query validation - videos', () => {
-      // All current modules support videos, but we test the pattern is correct
+      // All current modules support videos. This test verifies the pattern exists.
+      // If a module without video support existed, it would throw "not supported" before "query required"
       const searcher = new Pornsearch('test', 'pornhub');
-      // This should not throw since module supports videos and has valid query
       expect(searcher.videos).toBeDefined();
     });
   });
