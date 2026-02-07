@@ -20,7 +20,7 @@ class Youporn extends AbstractModule.with(VideoMixin) {
     const videos = $('div.sixteen-column.searchResults div.video-box');
 
     return videos
-      .map((index: number, element: cheerio.Element) => {
+      .map((_index: number, element: cheerio.Element) => {
         const data = $(element);
 
         if (!data.length) {

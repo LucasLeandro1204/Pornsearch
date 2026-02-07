@@ -20,7 +20,7 @@ class Motherless extends AbstractModule.with(VideoMixin) {
     const videos = $('div.browse div.content-wrapper:nth-child(7) div.thumb-container');
 
     return videos
-      .map((index: number, element: cheerio.Element) => {
+      .map((_index: number, element: cheerio.Element) => {
         const data = $(element);
 
         if (!data.length) {

@@ -25,7 +25,7 @@ class Sex extends AbstractModule.with(GifMixin, VideoMixin) {
     const videos = $('#masonry_container .masonry_box');
 
     return videos
-      .map((index: number, element: cheerio.Element) => {
+      .map((_index: number, element: cheerio.Element) => {
         const cached = $(element);
         const link = cached.find('.title a');
         const title = link.text();
@@ -50,7 +50,7 @@ class Sex extends AbstractModule.with(GifMixin, VideoMixin) {
     const gifs = $('#masonry_container .masonry_box').not('.ad_box');
 
     return gifs
-      .map((index: number, element: cheerio.Element) => {
+      .map((_index: number, element: cheerio.Element) => {
         const data = $(element).find('a.image_wrapper');
         const title = data.attr('title');
         const url = data.find('img').data('src') as string;
