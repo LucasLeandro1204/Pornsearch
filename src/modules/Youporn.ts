@@ -20,8 +20,8 @@ class Youporn extends AbstractModule.with(VideoMixin) {
     const videos = $('div.sixteen-column.searchResults div.video-box');
 
     return videos
-      .map((_i: any) => {
-        const data = videos.eq(_i);
+      .map((_index: number, element: cheerio.Element) => {
+        const data = $(element);
 
         if (!data.length) {
           return undefined;
@@ -37,7 +37,7 @@ class Youporn extends AbstractModule.with(VideoMixin) {
         };
       })
       .get()
-      .filter((item: any): item is Video => item !== undefined);
+      .filter((item: Video | undefined): item is Video => item !== undefined);
   }
 }
 
