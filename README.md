@@ -52,7 +52,7 @@ Pornsearch.gifs()
 | [redtube](https://redtube.com/) |   X    |      |
 | [xvideos](http://xvideos.com/)  |   X    |      |
 | [youporn](http://youporn.com/)  |   X    |      |
-| [motherless](http://motherless.com/)  |   X    |      |
+| [motherless](http://motherless.com/)  |   X    |  X   |
 
 
 #### Videos structure
@@ -70,10 +70,11 @@ What will return in video search
 #### Gifs structure
 What will return in gif search
 
-| Site (Module name)             | Title | Url | Webm |
-|:-------------------------------|:-----:|:---:|:----:|
-| [pornhub](http://pornhub.com/) |   X   |  X  |  X   |
-| [sex](http://sex.com/)         |   X   |  X  |      |
+| Site (Module name)             | Title | Url | Webm | Thumb |
+|:-------------------------------|:-----:|:---:|:----:|:-----:|
+| [pornhub](http://pornhub.com/) |   X   |  X  |  X   |       |
+| [sex](http://sex.com/)         |   X   |  X  |      |       |
+| [motherless](http://motherless.com/) |   X   |  X  |      |   X   |
 
 
 ## Installation

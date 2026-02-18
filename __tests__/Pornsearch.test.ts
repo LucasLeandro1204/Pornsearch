@@ -149,7 +149,7 @@ describe('Pornsearch', () => {
 
   describe('GIF support', () => {
     it('should throw error for modules that do not support gifs', () => {
-      const noGifModules = ['redtube', 'xvideos', 'youporn', 'motherless'];
+      const noGifModules = ['redtube', 'xvideos', 'youporn'];
       noGifModules.forEach((module) => {
         const searcher = new Pornsearch('test', module);
         expect(() => searcher.gifs()).toThrow('GIF search is not supported for');
@@ -157,7 +157,7 @@ describe('Pornsearch', () => {
     });
 
     it('should not throw for modules that support gifs', () => {
-      const gifModules = ['pornhub', 'sex'];
+      const gifModules = ['pornhub', 'sex', 'motherless'];
       gifModules.forEach((module) => {
         const searcher = new Pornsearch('test', module);
         // Just check that gifs method exists and doesn't throw immediately

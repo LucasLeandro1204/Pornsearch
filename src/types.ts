@@ -24,6 +24,8 @@ export interface Gif {
   url: string;
   /** Optional URL to WebM video version (better performance) */
   webm?: string;
+  /** Optional URL to the GIF thumbnail image */
+  thumb?: string;
 }
 
 /**
