@@ -20,7 +20,7 @@ class Xvideos extends AbstractModule.with(VideoMixin) {
     const videos = $('#content .mozaique .thumb-block');
 
     return videos
-      .map((index: number, element: cheerio.Element) => {
+      .map((_index: number, element: cheerio.Element) => {
         const cache = $(element);
         const title = cache.find('p a').eq(0);
         const thumbSrc = (cache.find('.thumb img').data('src') as string) || '';

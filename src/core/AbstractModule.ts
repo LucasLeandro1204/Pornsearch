@@ -41,7 +41,6 @@ export abstract class AbstractModule {
    * ```
    */
   static with(...mixins: Mixin[]): typeof AbstractModule {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
     let baseClass: any = this;
     for (const mixin of mixins) {
       baseClass = mixin(baseClass);

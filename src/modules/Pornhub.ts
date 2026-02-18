@@ -25,7 +25,7 @@ class Pornhub extends AbstractModule.with(GifMixin, VideoMixin) {
     const videos = $('ul.videos.search-video-thumbs li');
 
     return videos
-      .map((index: number, element: cheerio.Element) => {
+      .map((_index: number, element: cheerio.Element) => {
         const data = $(element);
 
         if (!data.length) {
@@ -49,7 +49,7 @@ class Pornhub extends AbstractModule.with(GifMixin, VideoMixin) {
     const gifs = $('ul.gifs.gifLink li');
 
     return gifs
-      .map((index: number, element: cheerio.Element) => {
+      .map((_index: number, element: cheerio.Element) => {
         const data = $(element).find('a');
         const href = data.attr('href');
 
