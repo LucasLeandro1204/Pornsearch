@@ -32,11 +32,16 @@ class Motherless extends AbstractModule.with(VideoMixin, GifMixin) {
           return undefined;
         }
 
+        const href = data.find('a').eq(0).attr('href');
+        if (!href) {
+          return undefined;
+        }
+
         const thumb = data.find('img.static').attr('src') || '';
 
         return {
           title: data.find('.title').text().trim(),
-          url: `${data.find('a').eq(0).attr('href')}`,
+          url: href,
           duration: data.find('.captions div.caption.left').text(),
           thumb,
         };
@@ -56,11 +61,16 @@ class Motherless extends AbstractModule.with(VideoMixin, GifMixin) {
           return undefined;
         }
 
+        const href = data.find('a').eq(0).attr('href');
+        if (!href) {
+          return undefined;
+        }
+
         const thumb = data.find('img.static').attr('src') || '';
 
         return {
           title: data.find('.title').text().trim(),
-          url: `${data.find('a').eq(0).attr('href')}`,
+          url: href,
           thumb,
         };
       })

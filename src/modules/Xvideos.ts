@@ -23,18 +23,24 @@ class Xvideos extends AbstractModule.with(VideoMixin) {
       .map((_index: number, element: cheerio.Element) => {
         const cache = $(element);
         const title = cache.find('p a').eq(0);
+        const href = title.attr('href');
         const thumbSrc = (cache.find('.thumb img').data('src') as string) || '';
+
+        if (!href) {
+          return undefined;
+        }
 
         return {
           title: title.text(),
-          url: `https://xvideos.com${title.attr('href')}`,
+          url: `https://xvideos.com${href}`,
           duration: cache.find('.duration').text(),
           thumb: thumbSrc
             ? thumbSrc.replace('thumbs169', 'thumbs169lll').replace('THUMBNUM', '5')
             : '',
         };
       })
-      .get();
+      .get()
+      .filter((item: Video | undefined): item is Video => item !== undefined);
   }
 }
 

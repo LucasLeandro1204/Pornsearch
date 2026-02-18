@@ -27,11 +27,16 @@ class Youporn extends AbstractModule.with(VideoMixin) {
           return undefined;
         }
 
+        const href = data.find('a').eq(0).attr('href');
+        if (!href) {
+          return undefined;
+        }
+
         const thumb = data.find('img').attr('data-original') || '';
 
         return {
           title: data.find('.video-box-title').text().trim(),
-          url: `http://youporn.com${data.find('a').eq(0).attr('href')}`,
+          url: `http://youporn.com${href}`,
           duration: data.find('.video-duration').text(),
           thumb,
         };

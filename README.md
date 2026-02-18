@@ -39,7 +39,6 @@ const Pornsearch = require('pornsearch').search('ass');
 Pornsearch.gifs()
   .then(gifs => console.log(gifs));
 ```
-```
 
 ## Support
 

@@ -30,14 +30,15 @@ class Sex extends AbstractModule.with(GifMixin, VideoMixin) {
         const link = cached.find('.title a');
         const title = link.text();
         const duration = cached.find('.duration').text();
+        const href = link.attr('href');
 
-        if (!title || !duration) {
+        if (!title || !duration || !href) {
           return undefined;
         }
 
         return {
           title,
-          url: `http://www.sex.com${link.attr('href')}`,
+          url: `http://www.sex.com${href}`,
           duration,
           thumb: cached.find('.image').data('src') as string,
         };

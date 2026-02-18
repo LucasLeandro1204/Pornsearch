@@ -32,11 +32,16 @@ class Pornhub extends AbstractModule.with(GifMixin, VideoMixin) {
           return undefined;
         }
 
+        const href = data.find('a').eq(0).attr('href');
+        if (!href) {
+          return undefined;
+        }
+
         const thumb = data.find('img').attr('data-mediumthumb') || '';
 
         return {
           title: data.find('a').text().trim(),
-          url: `http://pornhub.com${data.find('a').eq(0).attr('href')}`,
+          url: `http://pornhub.com${href}`,
           duration: data.find('.duration').text(),
           thumb: thumb.replace(/\([^)]*\)/g, ''),
         };
