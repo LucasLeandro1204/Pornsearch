@@ -1,8 +1,11 @@
 # Pornsearch
 
-[![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org/)
 
 Easy way to search for porn content
+
+**Now with full TypeScript support!** 🎉
 
 #### If you have any suggestions of a website, open an issue!
 
@@ -16,6 +19,17 @@ const Searcher = new Pornsearch('tits');
 
 Searcher.videos()
   .then(videos => console.log(videos));
+```
+
+**TypeScript:**
+```typescript
+import Pornsearch, { Video, Gif } from 'pornsearch';
+
+const searcher = new Pornsearch('tits');
+
+searcher.videos().then((videos: Video[]) => {
+  console.log(videos);
+});
 ```
 
 ```js
@@ -41,13 +55,14 @@ Pornsearch.gifs()
 
 #### Basic search
 
-| Site (Module name)              | Videos | Gifs |
-|:--------------------------------|:------:|:----:|
-| [pornhub](http://pornhub.com/)  |   X    |  X   |
-| [sex](http://sex.com/)          |   X    |  X   |
-| [redtube](https://redtube.com/) |   X    |      |
-| [xvideos](http://xvideos.com/)  |   X    |      |
-| [youporn](http://youporn.com/)  |   X    |      |
+| Site (Module name)                  | Videos | Gifs |
+|:------------------------------------|:------:|:----:|
+| [pornhub](http://pornhub.com/)      |   X    |  X   |
+| [sex](http://sex.com/)              |   X    |  X   |
+| [motherless](http://motherless.com/)|   X    |  X   |
+| [redtube](https://redtube.com/)     |   X    |      |
+| [xvideos](http://xvideos.com/)      |   X    |      |
+| [youporn](http://youporn.com/)      |   X    |      |
 | [motherless](http://motherless.com/)  |   X    |      |
 
 
