@@ -206,6 +206,7 @@ class Pornsearch {
       }
 
       // Network error: wrap with helpful context
+      console.warn(error);
       throw new Error(
         `Failed to search for "${this.module.query}" on ${this.module.name} (page ${page}). ` +
           `This could be due to network issues, site changes, or no results being available.`
