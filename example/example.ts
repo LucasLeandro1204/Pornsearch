@@ -67,9 +67,7 @@ async function main() {
 
     // Demonstrate fluent API with setQuery()
     console.log('Using fluent API to change query...');
-    const fluentSearcher = new Pornsearch()
-      .setQuery('boobs')
-      .driver('redtube');
+    const fluentSearcher = new Pornsearch().setQuery('boobs').driver('redtube');
     console.log('New query:', fluentSearcher.query);
     console.log('Module:', fluentSearcher.current());
     console.log('Supports GIFs:', fluentSearcher.supportsGifs());
