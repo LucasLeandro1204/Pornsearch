@@ -1,4 +1,3 @@
-import axios from 'axios';
 import * as cheerio from 'cheerio';
 import modules from './core/Modules';
 import { ModuleInterface, Video, Gif, ContentType } from './types';
@@ -189,25 +188,10 @@ class Pornsearch {
 
       return data ?? [];
     } catch (error: unknown) {
-      // Distinguish between network (Axios) errors and parsing/runtime errors
-      if (!axios.isAxiosError(error)) {
-        // Non-network error: preserve original error details where possible
-        if (error instanceof Error) {
-          throw error;
-        }
-
-        // Fallback for non-Error throw values
-        throw new Error(
-          `Unexpected error while processing results for "${this.module.query}" on ${this.module.name} (page ${page}).`,
-        );
-      }
-
-      // Network error: wrap with helpful context
       console.warn(error);
 
       throw new Error(
-        `Failed to search for "${this.module.query}" on ${this.module.name} (page ${page}). ` +
-          `This could be due to network issues, site changes, or no results being available.`,
+        `Unexpected error while processing results for "${this.module.query}" on ${this.module.name} (page ${page}).`,
       );
     }
   }
