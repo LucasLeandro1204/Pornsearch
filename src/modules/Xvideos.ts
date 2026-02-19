@@ -14,7 +14,7 @@ class Xvideos extends AbstractModule.with(VideoMixin) {
   }
 
   videoUrl(page?: number): string {
-    return `https://www.xvideos.com/?k=${encodeURIComponent(this.query)}&p=${page || this.firstpage}`;
+    return `https://www.xvideos.com/?k=${encodeURIComponent(this.query)}&p=${page ?? this.firstpage}`;
   }
 
   videoParser($: CheerioAPI): Video[] {

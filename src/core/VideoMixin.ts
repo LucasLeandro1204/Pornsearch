@@ -1,8 +1,6 @@
 import { OverwriteError } from './OverwriteError';
-import { Video } from '../types';
+import { Video, Constructor } from '../types';
 import type { CheerioAPI } from 'cheerio';
-
-type Constructor<T = object> = new (...args: any[]) => T;
 
 /**
  * Mixin that adds Video search functionality to a module

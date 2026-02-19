@@ -1,4 +1,3 @@
-import axios from 'axios';
 import * as cheerio from 'cheerio';
 import modules from './core/Modules';
 import { ModuleInterface, Video, Gif, ContentType } from './types';
@@ -98,7 +97,7 @@ class Pornsearch {
       );
     }
     this._validateQuery();
-    return this._get(this.module.gifUrl(page), GIF, page || this.module.firstpage);
+    return this._get(this.module.gifUrl(page), GIF, page ?? this.module.firstpage);
   }
 
   /**
@@ -117,7 +116,7 @@ class Pornsearch {
       );
     }
     this._validateQuery();
-    return this._get(this.module.videoUrl(page), VIDEO, page || this.module.firstpage);
+    return this._get(this.module.videoUrl(page), VIDEO, page ?? this.module.firstpage);
   }
 
   /**
@@ -173,7 +172,15 @@ class Pornsearch {
     page: number,
   ): Promise<T[]> {
     try {
-      const { data: body } = await axios.get(url);
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(
+          `Request to ${url} failed with status ${response.status} ${response.statusText}`,
+        );
+      }
+
+      const body = await response.text();
       const $ = cheerio.load(body);
       const parserMethod = `${type}${PARSER}` as 'videoParser' | 'gifParser';
       const parser = this.module[parserMethod];
@@ -186,27 +193,14 @@ class Pornsearch {
 
       // Empty result sets are valid (no matches found); return the empty array without throwing.
 
-      return data;
+      return data ?? [];
     } catch (error: unknown) {
-      // Distinguish between network (Axios) errors and parsing/runtime errors
-      if (!axios.isAxiosError(error)) {
-        // Non-network error: preserve original error details where possible
-        if (error instanceof Error) {
-          throw error;
-        }
-
-        // Fallback for non-Error throw values
-        throw new Error(
-          `Unexpected error while processing results for "${this.module.query}" on ${this.module.name} (page ${page}).`,
-        );
+      if (error instanceof Error) {
+        throw error;
       }
 
-      // Network error: wrap with helpful context
-      console.warn(error);
-
       throw new Error(
-        `Failed to search for "${this.module.query}" on ${this.module.name} (page ${page}). ` +
-          `This could be due to network issues, site changes, or no results being available.`,
+        `Unexpected error while processing results for "${this.module.query}" on ${this.module.name} (page ${page}): ${String(error)}`,
       );
     }
   }
@@ -229,7 +223,7 @@ class Pornsearch {
       );
     }
 
-    this.module = new PornModule(query || this.query);
+    this.module = new PornModule(query ?? this.query);
 
     return this;
   }
@@ -278,6 +272,10 @@ export {
   GifParser,
   UrlGenerator,
   ModuleConstructor,
+  Constructor,
+  Mixin,
+  VideoCapable,
+  GifCapable,
 } from './types';
 
 export default Pornsearch;

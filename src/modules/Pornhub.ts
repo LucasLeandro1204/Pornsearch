@@ -15,11 +15,11 @@ class Pornhub extends AbstractModule.with(GifMixin, VideoMixin) {
   }
 
   videoUrl(page?: number): string {
-    return `http://www.pornhub.com/video/search?search=${encodeURIComponent(this.query)}&page=${page || this.firstpage}`;
+    return `http://www.pornhub.com/video/search?search=${encodeURIComponent(this.query)}&page=${page ?? this.firstpage}`;
   }
 
   gifUrl(page?: number): string {
-    return `http://www.pornhub.com/gifs/search?search=${encodeURIComponent(this.query)}&page=${page || this.firstpage}`;
+    return `http://www.pornhub.com/gifs/search?search=${encodeURIComponent(this.query)}&page=${page ?? this.firstpage}`;
   }
 
   videoParser($: CheerioAPI): Video[] {
@@ -41,7 +41,7 @@ class Pornhub extends AbstractModule.with(GifMixin, VideoMixin) {
         const thumb = data.find('img').attr('data-mediumthumb') || '';
 
         return {
-          title: data.find('a').text().trim(),
+          title: data.find('a').attr('title')?.trim() ?? '',
           url: `http://pornhub.com${href}`,
           duration: data.find('.duration').text(),
           thumb: thumb.replace(/\([^)]*\)/g, ''),
