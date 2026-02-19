@@ -15,19 +15,11 @@ class Sex extends AbstractModule.with(GifMixin, VideoMixin) {
   }
 
   videoUrl(page?: number): string {
-    const a = `http://www.sex.com/search/videos?query=${encodeURIComponent(this.query)}&page=${page ?? this.firstpage}`;
-
-    console.log(a);
-
-    return a;
+    return `http://www.sex.com/search/videos?query=${encodeURIComponent(this.query)}&page=${page ?? this.firstpage}`;
   }
 
   gifUrl(page?: number): string {
-    let a = `http://www.sex.com/search/gifs?query=${encodeURIComponent(this.query)}&page=${page ?? this.firstpage}`;
-
-    console.log(a);
-
-    return a;
+    return `http://www.sex.com/search/gifs?query=${encodeURIComponent(this.query)}&page=${page ?? this.firstpage}`;
   }
 
   videoParser($: CheerioAPI): Video[] {
