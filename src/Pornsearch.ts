@@ -200,7 +200,7 @@ class Pornsearch {
       }
 
       throw new Error(
-        `Unexpected error while processing results for "${this.module.query}" on ${this.module.name} (page ${page}).`,
+        `Unexpected error while processing results for "${this.module.query}" on ${this.module.name} (page ${page}): ${String(error)}`,
       );
     }
   }
