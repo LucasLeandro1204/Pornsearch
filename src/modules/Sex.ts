@@ -15,12 +15,11 @@ class Sex extends AbstractModule.with(GifMixin, VideoMixin) {
   }
 
   videoUrl(page?: number): string {
-    const a =  `http://www.sex.com/search/videos?query=${encodeURIComponent(this.query)}&page=${page ?? this.firstpage}`;
+    const a = `http://www.sex.com/search/videos?query=${encodeURIComponent(this.query)}&page=${page ?? this.firstpage}`;
 
     console.log(a);
 
     return a;
-
   }
 
   gifUrl(page?: number): string {
@@ -46,7 +45,6 @@ class Sex extends AbstractModule.with(GifMixin, VideoMixin) {
 
         const title = link.text();
         const duration = cached.find('.duration').text();
-
 
         return {
           title,
