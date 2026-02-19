@@ -94,7 +94,7 @@ class Pornsearch {
     if (typeof this.module.gifUrl !== 'function') {
       throw new Error(
         `GIF search is not supported for ${this.module.name}. ` +
-          `Supported modules with GIF search: ${this._getModulesWithGifSupport().join(', ')}`
+          `Supported modules with GIF search: ${this._getModulesWithGifSupport().join(', ')}`,
       );
     }
     this._validateQuery();
@@ -113,7 +113,7 @@ class Pornsearch {
     if (typeof this.module.videoUrl !== 'function') {
       throw new Error(
         `Video search is not supported for ${this.module.name}. ` +
-          `Supported modules with video search: ${this._getModulesWithVideoSupport().join(', ')}`
+          `Supported modules with video search: ${this._getModulesWithVideoSupport().join(', ')}`,
       );
     }
     this._validateQuery();
@@ -170,7 +170,7 @@ class Pornsearch {
   private async _get<T extends Video | Gif>(
     url: string,
     type: ContentType,
-    page: number
+    page: number,
   ): Promise<T[]> {
     try {
       const { data: body } = await axios.get(url);
@@ -201,7 +201,7 @@ class Pornsearch {
 
         // Fallback for non-Error throw values
         throw new Error(
-          `Unexpected error while processing results for "${this.module.query}" on ${this.module.name} (page ${page}).`
+          `Unexpected error while processing results for "${this.module.query}" on ${this.module.name} (page ${page}).`,
         );
       }
 
@@ -210,7 +210,7 @@ class Pornsearch {
 
       throw new Error(
         `Failed to search for "${this.module.query}" on ${this.module.name} (page ${page}). ` +
-          `This could be due to network issues, site changes, or no results being available.`
+          `This could be due to network issues, site changes, or no results being available.`,
       );
     }
   }
@@ -229,7 +229,7 @@ class Pornsearch {
     if (!PornModule) {
       const supportedModules = this.support().join(', ');
       throw new Error(
-        `Module "${driver}" is not supported. Supported modules are: ${supportedModules}`
+        `Module "${driver}" is not supported. Supported modules are: ${supportedModules}`,
       );
     }
 
@@ -273,7 +273,16 @@ class Pornsearch {
 }
 
 // Re-export types for TypeScript users
-export { Video, Gif, ModuleInterface, ContentType, VideoParser, GifParser, UrlGenerator, ModuleConstructor } from './types';
+export {
+  Video,
+  Gif,
+  ModuleInterface,
+  ContentType,
+  VideoParser,
+  GifParser,
+  UrlGenerator,
+  ModuleConstructor,
+} from './types';
 
 export default Pornsearch;
 

@@ -17,7 +17,7 @@ interface ModulesRegistry {
 /**
  * Central registry of all supported modules
  * Each key is a lowercase module name that can be used with driver()
- * 
+ *
  * @example
  * ```typescript
  * // Access a module
