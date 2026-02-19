@@ -18,7 +18,7 @@ class Youporn extends AbstractModule.with(VideoMixin) {
   }
 
   videoParser($: CheerioAPI): Video[] {
-    const videos = $('div.sixteen-column.searchResults div.video-box');
+    const videos = $('div.searchResults div.video-box');
 
     return videos
       .map((_index: number, element: Element) => {
@@ -33,12 +33,12 @@ class Youporn extends AbstractModule.with(VideoMixin) {
           return undefined;
         }
 
-        const thumb = data.find('img').attr('data-original') || '';
+        const thumb = data.find('.thumb-image').attr('data-src') || '';
 
         return {
-          title: data.find('.video-box-title').text().trim(),
+          title: data.find('.video-title-text').text().trim(),
           url: `http://youporn.com${href}`,
-          duration: data.find('.video-duration').text(),
+          duration: data.find('.video-duration').text().trim(),
           thumb,
         };
       })

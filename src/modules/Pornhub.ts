@@ -41,7 +41,7 @@ class Pornhub extends AbstractModule.with(GifMixin, VideoMixin) {
         const thumb = data.find('img').attr('data-mediumthumb') || '';
 
         return {
-          title: data.find('a').text().trim(),
+          title: data.find('a').attr('title')?.trim() ?? '',
           url: `http://pornhub.com${href}`,
           duration: data.find('.duration').text(),
           thumb: thumb.replace(/\([^)]*\)/g, ''),

@@ -23,7 +23,7 @@ class Motherless extends AbstractModule.with(VideoMixin, GifMixin) {
   }
 
   videoParser($: CheerioAPI): Video[] {
-    const videos = $('div.browse div.content-wrapper:nth-child(7) div.thumb-container');
+    const videos = $('div.thumb-container');
 
     return videos
       .map((_index: number, element: Element) => {
@@ -34,7 +34,7 @@ class Motherless extends AbstractModule.with(VideoMixin, GifMixin) {
         }
 
         const href = data.find('a').eq(0).attr('href');
-        if (!href) {
+        if (!(href && href.includes('motherless'))) {
           return undefined;
         }
 
@@ -43,7 +43,7 @@ class Motherless extends AbstractModule.with(VideoMixin, GifMixin) {
         return {
           title: data.find('.title').text().trim(),
           url: href,
-          duration: data.find('.captions div.caption.left').text(),
+          duration: '',
           thumb,
         };
       })
@@ -52,7 +52,7 @@ class Motherless extends AbstractModule.with(VideoMixin, GifMixin) {
   }
 
   gifParser($: CheerioAPI): Gif[] {
-    const gifs = $('div.browse div.content-wrapper:nth-child(7) div.thumb-container');
+    const gifs = $('div.thumb-container');
 
     return gifs
       .map((_index: number, element: Element) => {
@@ -63,7 +63,7 @@ class Motherless extends AbstractModule.with(VideoMixin, GifMixin) {
         }
 
         const href = data.find('a').eq(0).attr('href');
-        if (!href) {
+        if (!(href && href.includes('motherless'))) {
           return undefined;
         }
 
