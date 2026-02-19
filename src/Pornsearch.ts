@@ -173,7 +173,8 @@ class Pornsearch {
     page: number,
   ): Promise<T[]> {
     try {
-      const { data: body } = await axios.get(url);
+      const response = await fetch(url);
+      const body = await response.text();
       const $ = cheerio.load(body);
       const parserMethod = `${type}${PARSER}` as 'videoParser' | 'gifParser';
       const parser = this.module[parserMethod];
@@ -186,7 +187,7 @@ class Pornsearch {
 
       // Empty result sets are valid (no matches found); return the empty array without throwing.
 
-      return data;
+      return data ?? [];
     } catch (error: unknown) {
       // Distinguish between network (Axios) errors and parsing/runtime errors
       if (!axios.isAxiosError(error)) {

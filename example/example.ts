@@ -9,7 +9,7 @@ async function main() {
     console.log('=== Pornsearch TypeScript Example ===\n');
 
     // Create a new searcher with default driver (pornhub)
-    const searcher = new Pornsearch('amateur');
+    const searcher = new Pornsearch('boobs');
 
     console.log('Current driver:', searcher.current());
     console.log('Search query:', searcher.query);
@@ -54,7 +54,7 @@ async function main() {
 
     for (const site of searcher.support()) {
       console.log(`Using static search method with ${site}...`);
-      const siteSearcher = Pornsearch.search('test').driver(site);
+      const siteSearcher = Pornsearch.search('boobs').driver(site);
       const siteVideos = await siteSearcher.videos(1);
 
       console.log(`Found ${siteVideos.length} videos on ${site}:`);
@@ -68,7 +68,7 @@ async function main() {
     // Demonstrate fluent API with setQuery()
     console.log('Using fluent API to change query...');
     const fluentSearcher = new Pornsearch()
-      .setQuery('lesbian')
+      .setQuery('boobs')
       .driver('redtube');
     console.log('New query:', fluentSearcher.query);
     console.log('Module:', fluentSearcher.current());
