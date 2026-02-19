@@ -13,7 +13,7 @@ class TestModule extends AbstractModule.with(VideoMixin, GifMixin) {
   }
 
   videoUrl(page?: number): string {
-    return `https://example.com/videos?q=${this.query}&page=${page || this.firstpage}`;
+    return `https://example.com/videos?q=${this.query}&page=${page ?? this.firstpage}`;
   }
 
   videoParser(): any[] {
@@ -21,7 +21,7 @@ class TestModule extends AbstractModule.with(VideoMixin, GifMixin) {
   }
 
   gifUrl(page?: number): string {
-    return `https://example.com/gifs?q=${this.query}&page=${page || this.firstpage}`;
+    return `https://example.com/gifs?q=${this.query}&page=${page ?? this.firstpage}`;
   }
 
   gifParser(): any[] {

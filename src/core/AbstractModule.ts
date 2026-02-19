@@ -1,12 +1,4 @@
-/**
- * Base constructor type for mixin pattern
- */
-type Constructor<T = object> = new (...args: any[]) => T;
-
-/**
- * Mixin function type that enhances a class with additional functionality
- */
-type Mixin<T = object> = (base: Constructor) => Constructor<T>;
+import { Constructor, Mixin } from '../types';
 
 /**
  * Abstract base class for all module implementations
@@ -40,7 +32,15 @@ export abstract class AbstractModule {
    * }
    * ```
    */
+  static with<A>(m1: Mixin<A>): Constructor<A> & typeof AbstractModule;
+  static with<A, B>(m1: Mixin<A>, m2: Mixin<B>): Constructor<A & B> & typeof AbstractModule;
+  static with<A, B, C>(
+    m1: Mixin<A>,
+    m2: Mixin<B>,
+    m3: Mixin<C>,
+  ): Constructor<A & B & C> & typeof AbstractModule;
   static with(...mixins: Mixin[]): typeof AbstractModule {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let baseClass: any = this;
     for (const mixin of mixins) {
       baseClass = mixin(baseClass);

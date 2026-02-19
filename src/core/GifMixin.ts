@@ -1,8 +1,6 @@
 import { OverwriteError } from './OverwriteError';
-import { Gif } from '../types';
+import { Gif, Constructor } from '../types';
 import type { CheerioAPI } from 'cheerio';
-
-type Constructor<T = object> = new (...args: any[]) => T;
 
 /**
  * Mixin that adds GIF search functionality to a module

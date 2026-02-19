@@ -1,6 +1,32 @@
 import type { CheerioAPI } from 'cheerio';
 
 /**
+ * Base constructor type for mixin pattern
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type Constructor<T = object> = new (...args: any[]) => T;
+
+/**
+ * Interface for modules that support video search
+ */
+export interface VideoCapable {
+  /** Generate URL for video search */
+  videoUrl(page?: number): string;
+  /** Parse HTML/data to extract video information */
+  videoParser($: CheerioAPI, body?: string): Video[];
+}
+
+/**
+ * Interface for modules that support GIF search
+ */
+export interface GifCapable {
+  /** Generate URL for GIF search */
+  gifUrl(page?: number): string;
+  /** Parse HTML/data to extract GIF information */
+  gifParser($: CheerioAPI, body?: string): Gif[];
+}
+
+/**
  * Represents a video with metadata
  */
 export interface Video {
@@ -73,3 +99,8 @@ export interface ModuleInterface {
  * Type for module constructor functions
  */
 export type ModuleConstructor = new (query?: string) => ModuleInterface;
+
+/**
+ * Mixin function type that enhances a class with additional functionality
+ */
+export type Mixin<T = object> = (base: Constructor) => Constructor<T>;

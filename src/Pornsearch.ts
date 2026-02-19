@@ -98,7 +98,7 @@ class Pornsearch {
       );
     }
     this._validateQuery();
-    return this._get(this.module.gifUrl(page), GIF, page || this.module.firstpage);
+    return this._get(this.module.gifUrl(page), GIF, page ?? this.module.firstpage);
   }
 
   /**
@@ -117,7 +117,7 @@ class Pornsearch {
       );
     }
     this._validateQuery();
-    return this._get(this.module.videoUrl(page), VIDEO, page || this.module.firstpage);
+    return this._get(this.module.videoUrl(page), VIDEO, page ?? this.module.firstpage);
   }
 
   /**
@@ -229,7 +229,7 @@ class Pornsearch {
       );
     }
 
-    this.module = new PornModule(query || this.query);
+    this.module = new PornModule(query ?? this.query);
 
     return this;
   }
@@ -278,6 +278,10 @@ export {
   GifParser,
   UrlGenerator,
   ModuleConstructor,
+  Constructor,
+  Mixin,
+  VideoCapable,
+  GifCapable,
 } from './types';
 
 export default Pornsearch;
