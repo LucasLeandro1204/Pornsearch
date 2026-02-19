@@ -1,7 +1,7 @@
-import * as cheerio from 'cheerio';
 import VideoMixin from '../core/VideoMixin';
 import AbstractModule from '../core/AbstractModule';
 import { Video } from '../types';
+import type { CheerioAPI } from 'cheerio';
 
 interface RedtubeVideo {
   video: {
@@ -29,7 +29,7 @@ class Redtube extends AbstractModule.with(VideoMixin) {
     return `https://api.redtube.com/?data=redtube.Videos.searchVideos&output=json&search=${this.query}&thumbsize=big&page=${page || this.firstpage}`;
   }
 
-  videoParser(_$: cheerio.Root, body?: string): Video[] {
+  videoParser(_$: CheerioAPI, body?: string): Video[] {
     if (!body) {
       return [];
     }

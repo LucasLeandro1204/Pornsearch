@@ -1,6 +1,6 @@
 import { OverwriteError } from './OverwriteError';
 import { Gif } from '../types';
-import * as cheerio from 'cheerio';
+import type { CheerioAPI } from 'cheerio';
 
 type Constructor<T = object> = new (...args: any[]) => T;
 
@@ -29,7 +29,7 @@ export default function GifMixin<TBase extends Constructor>(Base: TBase) {
      * @returns Array of Gif objects
      * @throws OverwriteError if not implemented by subclass
      */
-    gifParser(_$: cheerio.Root, _body?: string): Gif[] {
+    gifParser(_$: CheerioAPI, _body?: string): Gif[] {
       throw new OverwriteError();
     }
   };

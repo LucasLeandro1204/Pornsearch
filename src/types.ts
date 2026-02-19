@@ -1,4 +1,4 @@
-import * as cheerio from 'cheerio';
+import type { CheerioAPI } from 'cheerio';
 
 /**
  * Represents a video with metadata
@@ -36,12 +36,12 @@ export type ContentType = 'gif' | 'video';
 /**
  * Parser function type for videos
  */
-export type VideoParser = ($: cheerio.Root, body?: string) => Video[];
+export type VideoParser = ($: CheerioAPI, body?: string) => Video[];
 
 /**
  * Parser function type for GIFs
  */
-export type GifParser = ($: cheerio.Root, body?: string) => Gif[];
+export type GifParser = ($: CheerioAPI, body?: string) => Gif[];
 
 /**
  * URL generator function type

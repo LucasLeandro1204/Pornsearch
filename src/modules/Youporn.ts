@@ -1,7 +1,8 @@
-import * as cheerio from 'cheerio';
 import VideoMixin from '../core/VideoMixin';
 import AbstractModule from '../core/AbstractModule';
 import { Video } from '../types';
+import type { CheerioAPI } from 'cheerio';
+import type { Element } from 'domhandler';
 
 class Youporn extends AbstractModule.with(VideoMixin) {
   get name(): string {
@@ -16,11 +17,11 @@ class Youporn extends AbstractModule.with(VideoMixin) {
     return `http://www.youporn.com/search/?query=${this.query}&page=${page || this.firstpage}`;
   }
 
-  videoParser($: cheerio.Root): Video[] {
+  videoParser($: CheerioAPI): Video[] {
     const videos = $('div.sixteen-column.searchResults div.video-box');
 
     return videos
-      .map((_index: number, element: cheerio.Element) => {
+      .map((_index: number, element: Element) => {
         const data = $(element);
 
         if (!data.length) {

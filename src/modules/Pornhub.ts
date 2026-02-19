@@ -1,8 +1,9 @@
-import * as cheerio from 'cheerio';
 import GifMixin from '../core/GifMixin';
 import VideoMixin from '../core/VideoMixin';
 import AbstractModule from '../core/AbstractModule';
 import { Video, Gif } from '../types';
+import type { CheerioAPI } from 'cheerio';
+import type { Element } from 'domhandler';
 
 class Pornhub extends AbstractModule.with(GifMixin, VideoMixin) {
   get name(): string {
@@ -21,11 +22,11 @@ class Pornhub extends AbstractModule.with(GifMixin, VideoMixin) {
     return `http://www.pornhub.com/gifs/search?search=${this.query}&page=${page || this.firstpage}`;
   }
 
-  videoParser($: cheerio.Root): Video[] {
+  videoParser($: CheerioAPI): Video[] {
     const videos = $('ul.videos.search-video-thumbs li');
 
     return videos
-      .map((_index: number, element: cheerio.Element) => {
+      .map((_index: number, element: Element) => {
         const data = $(element);
 
         if (!data.length) {
@@ -50,11 +51,11 @@ class Pornhub extends AbstractModule.with(GifMixin, VideoMixin) {
       .filter((item: Video | undefined): item is Video => item !== undefined);
   }
 
-  gifParser($: cheerio.Root): Gif[] {
+  gifParser($: CheerioAPI): Gif[] {
     const gifs = $('ul.gifs.gifLink li');
 
     return gifs
-      .map((_index: number, element: cheerio.Element) => {
+      .map((_index: number, element: Element) => {
         const data = $(element).find('a');
         const href = data.attr('href');
 

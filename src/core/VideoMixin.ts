@@ -1,6 +1,6 @@
 import { OverwriteError } from './OverwriteError';
 import { Video } from '../types';
-import * as cheerio from 'cheerio';
+import type { CheerioAPI } from 'cheerio';
 
 type Constructor<T = object> = new (...args: any[]) => T;
 
@@ -29,7 +29,7 @@ export default function VideoMixin<TBase extends Constructor>(Base: TBase) {
      * @returns Array of Video objects
      * @throws OverwriteError if not implemented by subclass
      */
-    videoParser(_$: cheerio.Root, _body?: string): Video[] {
+    videoParser(_$: CheerioAPI, _body?: string): Video[] {
       throw new OverwriteError();
     }
   };
