@@ -26,7 +26,7 @@ class Redtube extends AbstractModule.with(VideoMixin) {
   }
 
   videoUrl(page?: number): string {
-    return `https://api.redtube.com/?data=redtube.Videos.searchVideos&output=json&search=${this.query}&thumbsize=big&page=${page || this.firstpage}`;
+    return `https://api.redtube.com/?data=redtube.Videos.searchVideos&output=json&search=${encodeURIComponent(this.query)}&thumbsize=big&page=${page || this.firstpage}`;
   }
 
   videoParser(_$: CheerioAPI, body?: string): Video[] {

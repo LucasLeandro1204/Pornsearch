@@ -15,11 +15,11 @@ class Motherless extends AbstractModule.with(VideoMixin, GifMixin) {
   }
 
   videoUrl(page?: number): string {
-    return `http://www.motherless.com/term/videos/${this.query}?page=${page || this.firstpage}`;
+    return `http://www.motherless.com/term/videos/${encodeURIComponent(this.query)}?page=${page || this.firstpage}`;
   }
 
   gifUrl(page?: number): string {
-    return `http://www.motherless.com/term/gifs/${this.query}?page=${page || this.firstpage}`;
+    return `http://www.motherless.com/term/gifs/${encodeURIComponent(this.query)}?page=${page || this.firstpage}`;
   }
 
   videoParser($: CheerioAPI): Video[] {

@@ -14,7 +14,7 @@ class Youporn extends AbstractModule.with(VideoMixin) {
   }
 
   videoUrl(page?: number): string {
-    return `http://www.youporn.com/search/?query=${this.query}&page=${page || this.firstpage}`;
+    return `http://www.youporn.com/search/?query=${encodeURIComponent(this.query)}&page=${page || this.firstpage}`;
   }
 
   videoParser($: CheerioAPI): Video[] {

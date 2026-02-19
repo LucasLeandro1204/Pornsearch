@@ -63,7 +63,6 @@ Pornsearch.gifs()
 | [redtube](https://redtube.com/)     |   X    |      |
 | [xvideos](http://xvideos.com/)      |   X    |      |
 | [youporn](http://youporn.com/)      |   X    |      |
-| [motherless](http://motherless.com/)  |   X    |      |
 
 
 #### Videos structure

@@ -2,8 +2,15 @@
   "name": "pornsearch",
   "version": "2.4.3",
   "description": "Easy way to search for porn content on internet",
-  "main": "dist/Pornsearch",
+  "main": "dist/Pornsearch.js",
   "types": "dist/Pornsearch.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/Pornsearch.d.ts",
+      "require": "./dist/Pornsearch.js",
+      "import": "./dist/Pornsearch.js"
+    }
+  },
   "files": [
     "dist/*"
   ],

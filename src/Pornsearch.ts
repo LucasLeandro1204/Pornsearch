@@ -184,11 +184,7 @@ class Pornsearch {
 
       const data = parser($, body) as T[];
 
-      // if (!data.length) {
-      //   throw new Error(
-      //     `No results found for "${this.module.query}" on ${this.module.name} (page ${page})`
-      //   );
-      // }
+      // Empty result sets are valid (no matches found); return the empty array without throwing.
 
       return data;
     } catch (error: unknown) {
@@ -289,6 +285,6 @@ export default Pornsearch;
 // CommonJS compatibility: Allow both `require('pornsearch')` and `require('pornsearch').default`
 // This maintains backward compatibility with existing code
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = Pornsearch;
+  module.exports = Object.assign(Pornsearch, module.exports);
   module.exports.default = Pornsearch;
 }
