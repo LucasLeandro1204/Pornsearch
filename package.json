@@ -42,6 +42,9 @@
     "type": "git",
     "url": "git+https://github.com/LucasLeandro1204/pornsearch"
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "author": "LucasLeandro1204",
   "license": "MIT",
   "bugs": {

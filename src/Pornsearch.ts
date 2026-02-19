@@ -173,6 +173,13 @@ class Pornsearch {
   ): Promise<T[]> {
     try {
       const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(
+          `Request to ${url} failed with status ${response.status} ${response.statusText}`,
+        );
+      }
+
       const body = await response.text();
       const $ = cheerio.load(body);
       const parserMethod = `${type}${PARSER}` as 'videoParser' | 'gifParser';
@@ -188,7 +195,9 @@ class Pornsearch {
 
       return data ?? [];
     } catch (error: unknown) {
-      console.warn(error);
+      if (error instanceof Error) {
+        throw error;
+      }
 
       throw new Error(
         `Unexpected error while processing results for "${this.module.query}" on ${this.module.name} (page ${page}).`,
