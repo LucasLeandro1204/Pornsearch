@@ -1,4 +1,4 @@
-import Pornsearch from '../src/Pornsearch';
+import Pornsearch from '../dist/Pornsearch';
 
 /**
  * TypeScript example for Pornsearch library
@@ -51,16 +51,19 @@ async function main() {
     console.log('\n---\n');
 
     // Use the static search method
-    console.log('Using static search method with Pornhub...');
-    const pornhubSearcher = Pornsearch.search('test');
-    const pornhubVideos = await pornhubSearcher.videos(1);
 
-    console.log(`Found ${pornhubVideos.length} videos on Pornhub:`);
-    pornhubVideos.slice(0, 2).forEach((video, index) => {
-      console.log(`${index + 1}. ${video.title}`);
-      console.log(`   Duration: ${video.duration}`);
-    });
-    console.log('\n---\n');
+    for (const site of searcher.support()) {
+      console.log(`Using static search method with ${site}...`);
+      const siteSearcher = Pornsearch.search('test').driver(site);
+      const siteVideos = await siteSearcher.videos(1);
+
+      console.log(`Found ${siteVideos.length} videos on ${site}:`);
+      siteVideos.slice(0, 2).forEach((video, index) => {
+        console.log(`${index + 1}. ${video.title}`);
+        console.log(`   Duration: ${video.duration}`);
+      });
+      console.log('\n---\n');
+    }
 
     // Demonstrate fluent API with setQuery()
     console.log('Using fluent API to change query...');

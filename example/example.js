@@ -3,7 +3,7 @@
 const Pornsearch = require('../dist/Pornsearch');
 const PornDriver = Pornsearch.search('amateur');
 
-PornDriver.driver('sex')
+PornDriver.driver('pornhub')
   .gifs()
   .then((gifs) => {
     console.log(gifs);

@@ -9,18 +9,18 @@ const VIDEO: ContentType = 'video';
 
 /**
  * Main Pornsearch class for searching adult content across multiple platforms
- * 
+ *
  * @example
  * ```typescript
  * // Create a searcher
  * const searcher = new Pornsearch('query', 'pornhub');
- * 
+ *
  * // Search for videos
  * const videos = await searcher.videos();
- * 
+ *
  * // Search for gifs
  * const gifs = await searcher.gifs(2);
- * 
+ *
  * // Change driver
  * searcher.driver('sex');
  * ```
@@ -184,11 +184,11 @@ class Pornsearch {
 
       const data = parser($, body) as T[];
 
-      if (!data.length) {
-        throw new Error(
-          `No results found for "${this.module.query}" on ${this.module.name} (page ${page})`
-        );
-      }
+      // if (!data.length) {
+      //   throw new Error(
+      //     `No results found for "${this.module.query}" on ${this.module.name} (page ${page})`
+      //   );
+      // }
 
       return data;
     } catch (error: unknown) {
@@ -207,6 +207,7 @@ class Pornsearch {
 
       // Network error: wrap with helpful context
       console.warn(error);
+
       throw new Error(
         `Failed to search for "${this.module.query}" on ${this.module.name} (page ${page}). ` +
           `This could be due to network issues, site changes, or no results being available.`
